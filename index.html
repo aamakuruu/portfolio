@@ -304,11 +304,12 @@
     </div>
 
     <script>
+		// 1. LIGHTBOX LOGIC
 		function openLightbox(src) {
 			const lightboxImg = document.getElementById('lightbox-img');
 			lightboxImg.src = src;
 			
-			// Check if the file path contains "game-art" or "pixel"
+			// Auto-detect pixel art folders for the 50% height rule
 			if (src.includes('game-art') || src.includes('pixel')) {
 				lightboxImg.classList.add('pixel-upscale');
 			} else {
@@ -317,37 +318,25 @@
 			
 			document.getElementById('lightbox').style.display = 'flex';
 		}
-		// Use an Event Listener for better mobile compatibility
-		window.addEventListener('scroll', function() {
-			let btn = document.getElementById("jumpToTop");
-			let scrollPos = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
 
-			if (scrollPos > 300) { // Show slightly earlier
-				btn.style.setProperty("display", "block", "important");
-			} else {
-				btn.style.display = "none";
-			}
-		});
-		// Function to handle showing/hiding the button
+		// 2. JUMP TO TOP LOGIC (The "Glue")
 		function handleScroll() {
 			let btn = document.getElementById("jumpToTop");
-			// Checks multiple scroll properties for total mobile/desktop compatibility
-			let scrollPos = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+			// This checks how far you've scrolled on any device
+			let scrollPos = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
 
 			if (scrollPos > 300) {
-				btn.style.display = "block";
+				btn.style.setProperty("display", "block", "important");
 			} else {
 				btn.style.display = "none";
 			}
 		}
 
-		// 1. Run when the user scrolls
-		window.onscroll = handleScroll;
+		// 3. EVENT LISTENERS (This makes the button actually respond)
+		window.addEventListener('scroll', handleScroll);
+		window.addEventListener('load', handleScroll);
 
-		// 2. Run as soon as the page finishes loading
-		window.onload = handleScroll;
-
-//
+		// 4. INSTANT SNAP FUNCTION
 		function scrollToTop() {
 			window.scrollTo({top: 0, behavior: 'auto'});
 		}
