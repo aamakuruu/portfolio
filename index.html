@@ -179,6 +179,17 @@
         .gallery img:hover { opacity: 0.8; }
         .game-gallery img:hover { opacity: 0.8; }
 
+		/* Make video thumbnails look like the image thumbnails */
+		.gallery video, .game-gallery video {
+			width: 100%;
+			height: 200px; /* Matching your game-gallery height */
+			object-fit: cover;
+			image-rendering: pixelated;
+			image-rendering: crisp-edges;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+
         /* LIGHTBOX */
         #lightbox {
             display: none;
@@ -283,9 +294,17 @@
             <img src="game-art/circle no logo.png" onclick="openLightbox(this.src)">
             <img src="game-art/cave end.png" onclick="openLightbox(this.src)">
             <img src="game-art/buildingsilhrun.png" onclick="openLightbox(this.src)">
+            <img src="game-art/deltafuribg.png" onclick="openLightbox(this.src)">
             <img src="game-art/zoharfaces.png" onclick="openLightbox(this.src)">
             <img src="game-art/karma_special.gif" onclick="openLightbox(this.src)">
             <img src="game-art/echo_idle.gif" onclick="openLightbox(this.src)">
+			
+			<video 
+				src="game-art/MoM.webm" 
+				autoplay loop muted playsinline
+				onclick="openLightbox(this.src)">
+			</video>
+			
         </div>
 
         <h2 id="contact">Contact</h2>
@@ -306,17 +325,34 @@
     <script>
 		// 1. LIGHTBOX LOGIC
 		function openLightbox(src) {
-			const lightboxImg = document.getElementById('lightbox-img');
-			lightboxImg.src = src;
-			
-			// Auto-detect pixel art folders for the 50% height rule
-			if (src.includes('game-art') || src.includes('pixel')) {
-				lightboxImg.classList.add('pixel-upscale');
+			const lightbox = document.getElementById('lightbox');
+			const isVideo = src.endsWith('.webm') || src.endsWith('.mp4');
+
+			// Clear the lightbox content first
+			lightbox.innerHTML = '';
+
+			let content;
+			if (isVideo) {
+				content = document.createElement('video');
+				content.src = src;
+				content.autoplay = true;
+				content.loop = true;
+				content.muted = false; // Let them hear the game if there is sound!
+				content.controls = true; // Give them a play/pause bar
 			} else {
-				lightboxImg.classList.remove('pixel-upscale');
+				content = document.createElement('img');
+				content.src = src;
 			}
+
+			content.id = 'lightbox-img';
 			
-			document.getElementById('lightbox').style.display = 'flex';
+			// Apply your pixel scaling rule
+			if (src.includes('game-art') || src.includes('pixel')) {
+				content.classList.add('pixel-upscale');
+			}
+
+			lightbox.appendChild(content);
+			lightbox.style.display = 'flex';
 		}
 
 		// 2. JUMP TO TOP LOGIC (The "Glue")
