@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMAR MAKRUF | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        body { 
+            background-color: #1a1a1a; 
+            color: #ffffff; 
+            font-family: 'Montserrat', sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            scroll-behavior: smooth;
+        }
+
+        /* HEADER SECTION */
+        header {
+            background-color: #ffffff;
+            width: 100%;
+            padding: 60px 0 20px 0;
+            text-align: center;
+        }
+
+        header h1 { 
+            color: #000000; 
+            margin: 0; 
+            font-size: 2rem; 
+            font-weight: 900; 
+            letter-spacing: 6px;
+            text-transform: uppercase;
+        }
+
+		/* STICKY NAV - SHADOW ONLY AT THE BOTTOM */
+		nav {
+			background-color: #ffffff;
+			width: 100%;
+			padding: 15px 0;
+			display: flex;
+			gap: 15px;
+			justify-content: center;
+			align-items: stretch;
+			position: sticky;
+			top: 0;
+			z-index: 1000;
+
+			/* THE FIX: Positional Shadow */
+			/* 0 (horizontal) 6px (vertical) 10px (blur) -5px (spread) */
+			box-shadow: 0 6px 10px -5px rgba(0,0,0,0.3); 
+			
+			border-bottom: 3px solid #1a1a1a; 
+		}
+
+        nav a, .dropdown-trigger {
+            color: #ff3b4e; 
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            padding: 10px 20px;
+            border: 2px solid #1a1a1a;
+            border-radius: 4px;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            transition: background-color 0.2s;
+            cursor: pointer;
+        }
+
+        nav a:hover, .dropdown:hover .dropdown-trigger {
+            background-color: #1a1a1a;
+            color: #ff3b4e;
+        }
+
+        /* DROPDOWN SYSTEM - NO PIXEL GAPS */
+        .dropdown {
+            position: relative;
+            display: flex;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #ffffff;
+            min-width: 180px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+            z-index: 1001;
+            border: 2px solid #1a1a1a;
+            top: 100%;
+            left: 0;
+            margin-top: -2px; /* Overlaps border to kill white pixels */
+            border-radius: 0 0 4px 4px;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: #ff3b4e;
+            padding: 12px 16px;
+            display: block;
+            border: none;
+            border-radius: 0;
+            text-align: left;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* CONTENT WRAPPER */
+        .wrapper {
+            max-width: 1000px;
+            margin: 80px auto; 
+            padding: 0 20px;
+        }
+
+        h2 {
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 1.8rem;
+            margin-top: 80px;
+            letter-spacing: 1px;
+        }
+
+        h2[id] { scroll-margin-top: 110px; }
+
+        .video-box {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #000;
+            border-radius: 4px;
+            margin: 20px 0;
+            border: 1px solid #333;
+        }
+
+        /* 3-COLUMN GALLERY */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 450px; /* Uniform height for clean rows */
+            object-fit: cover;
+			image-rendering: pixelated; /* For Chrome, Edge, and Safari */
+			image-rendering: crisp-edges; /* For Firefox */
+            border-radius: 4px;
+            background: #333;
+			cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+		/* SPECIAL GRID FOR GAME ART (Smaller/More Columns) */
+		.game-gallery {
+			display: grid;
+			/* This forces more columns by lowering the minimum width to 180px */
+			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+			gap: 15px; /* Tighter gap for smaller images */
+			margin-top: 20px;
+		}
+
+		/* Ensure Game Art thumbnails aren't too tall */
+		.game-gallery img {
+			width: 100%;
+			height: 200px; /* Reduced height to keep them small */
+			object-fit: cover;
+			image-rendering: pixelated;
+			image-rendering: crisp-edges;
+			border-radius: 4px;
+			cursor: pointer;
+			transition: opacity 0.3s;
+		}
+
+        .gallery img:hover { opacity: 0.8; }
+        .game-gallery img:hover { opacity: 0.8; }
+
+        /* LIGHTBOX */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95);
+            justify-content: center;
+            align-items: center;
+        }
+
+		/* DEFAULT: For Illustrations (90%) */
+		#lightbox img {
+			width: auto;
+			max-width: 90vw;
+			max-height: 90vh;
+			object-fit: contain;
+		}
+		/* SPECIAL: For Pixel Art (50%) */
+		#lightbox img.pixel-upscale {
+			min-width: 50vw; /* Keeps it large enough to see */
+			max-height: 50vh; /* Limits height to 50% of the screen */
+			image-rendering: pixelated; 
+			image-rendering: crisp-edges;
+		}
+
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            opacity: 0.4;
+            font-size: 0.75rem;
+        }
+		/* THE FLOATING JUMP BUTTON */
+		#jumpToTop {
+			display: none; /* Hidden until user scrolls */
+			position: fixed;
+			bottom: 30px;
+			right: 30px;
+			z-index: 3000;
+			background-color: #1a1a1a;
+			color: #ff3b4e;
+			border: 2px solid #ff3b4e;
+			padding: 15px 20px;
+			font-weight: 900;
+			font-size: 0.7rem;
+			letter-spacing: 1px;
+			border-radius: 4px;
+			cursor: pointer;
+			text-transform: uppercase;
+			transition: all 0.2s;
+			/* Forces the browser to treat it as a top-level layer */
+			-webkit-transform: translateZ(0);
+		}
+
+		#jumpToTop:hover {
+			background-color: #ff3b4e;
+			color: #1a1a1a;
+		}
+        .accent { color: #ff3b4e; text-decoration: none; font-weight: 700; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>AMAR MAKRUF</h1>
+    </header>
+
+    <nav>
+        <a href="#games">GAMES</a>
+        <div class="dropdown">
+            <div class="dropdown-trigger">ART ▾</div>
+            <div class="dropdown-content">
+                <!--a href="#art">All Art</a-->
+                <a href="#art">Illustration</a>
+                <a href="#game-art">Game Art</a>
+            </div>
+        </div>
+        <a href="#contact">CONTACT</a>
+    </nav>
+
+    <div class="wrapper">
+        <h2 id="games">Gameplay Showcase</h2>
+        <div class="video-box">
+            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/764jojmIdPM" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <h2 id="art">Illustration</h2>
+        <div class="gallery">
+            <img src="art/skycatguy_HD.png" onclick="openLightbox(this.src)">
+            <img src="art/drralseixmas2_HD.png" onclick="openLightbox(this.src)">
+            <img src="art/torambs.png" onclick="openLightbox(this.src)">
+            <img src="art/skykrill_HD.png" onclick="openLightbox(this.src)">
+            <img src="art/ffxivultima_HD.png" onclick="openLightbox(this.src)">
+            <img src="art/dricecreamworld.png" style="object-position: right center" onclick="openLightbox(this.src)">
+            <img src="art/zrgrapefruit.png" onclick="openLightbox(this.src)">
+            <img src="art/drsit_HD.png" onclick="openLightbox(this.src)">
+            <img src="art/drcrossroad.png" style="object-position: 35% 50%;" onclick="openLightbox(this.src)">
+        </div>  
+		<h2 id="game-art">Game Art</h2>
+        <div class="game-gallery">
+            <img src="game-art/circle no logo.png" onclick="openLightbox(this.src)">
+            <img src="game-art/cave end.png" onclick="openLightbox(this.src)">
+            <img src="game-art/buildingsilhrun.png" onclick="openLightbox(this.src)">
+            <img src="game-art/zoharfaces.png" onclick="openLightbox(this.src)">
+            <img src="game-art/karma_special.gif" onclick="openLightbox(this.src)">
+            <img src="game-art/echo_idle.gif" onclick="openLightbox(this.src)">
+        </div>
+
+        <h2 id="contact">Contact</h2>
+        <p>Surabaya, Indonesia | <a href="mailto:aamakuruu@gmail.com" class="accent">aamakuruu@gmail.com</a></p>
+        <p>
+            <a href="https://aamakuruu.itch.io" class="accent">ITCH.IO</a> | 
+            <a href="https://x.com/aamakuruu" class="accent">TWITTER</a> |
+            <a href="https://youtube.com/@aamakuruu" class="accent">YOUTUBE</a>
+        </p>
+
+        <footer>© 2026 AMAR MAKRUF // PORTFOLIO</footer>
+    </div>
+
+    <div id="lightbox" onclick="this.style.display='none'">
+        <img id="lightbox-img" src="">
+    </div>
+
+    <script>
+		function openLightbox(src) {
+			const lightboxImg = document.getElementById('lightbox-img');
+			lightboxImg.src = src;
+			
+			// Check if the file path contains "game-art" or "pixel"
+			if (src.includes('game-art') || src.includes('pixel')) {
+				lightboxImg.classList.add('pixel-upscale');
+			} else {
+				lightboxImg.classList.remove('pixel-upscale');
+			}
+			
+			document.getElementById('lightbox').style.display = 'flex';
+		}
+		// Use an Event Listener for better mobile compatibility
+		window.addEventListener('scroll', function() {
+			let btn = document.getElementById("jumpToTop");
+			let scrollPos = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+
+			if (scrollPos > 300) { // Show slightly earlier
+				btn.style.setProperty("display", "block", "important");
+			} else {
+				btn.style.display = "none";
+			}
+		});
+		// Function to handle showing/hiding the button
+		function handleScroll() {
+			let btn = document.getElementById("jumpToTop");
+			// Checks multiple scroll properties for total mobile/desktop compatibility
+			let scrollPos = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+
+			if (scrollPos > 300) {
+				btn.style.display = "block";
+			} else {
+				btn.style.display = "none";
+			}
+		}
+
+		// 1. Run when the user scrolls
+		window.onscroll = handleScroll;
+
+		// 2. Run as soon as the page finishes loading
+		window.onload = handleScroll;
+
+//
+		function scrollToTop() {
+			window.scrollTo({top: 0, behavior: 'auto'});
+		}
+    </script>
+	<button onclick="scrollToTop()" id="jumpToTop" title="Go to top">Top ▴</button>
+</body>
+</html>
