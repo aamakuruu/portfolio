@@ -265,6 +265,7 @@
 			justify-content: center;
 			align-items: center;
 			overflow: hidden;
+			cursor: zoom-out;
         }
 		
 		.lightbox-container {
@@ -288,6 +289,7 @@
 			z-index: 3000; 
 			transition: transform 0.2s ease, opacity 0.2s;
 			user-select: none;
+			cursor: pointer;
 		}
         
         .close-lightbox:hover {
@@ -391,8 +393,9 @@
         <div class="dropdown">
             <div class="dropdown-trigger">ART ▾</div>
             <div class="dropdown-content">
+                <a href="#level-art">Levels & Environments</a>
+                <a href="#game-art">Character Sprites</a>
                 <a href="#art">Illustration</a>
-                <a href="#game-art">Levels & Environments</a>
                 <a href="#animation">Animation</a>
             </div>
         </div>
@@ -424,6 +427,38 @@
 			</div>
 		</div>
 
+		<h2 id="level-art">Levels & Environments</h2>
+        <div class="game-gallery">
+            <img src="game-art/deltafuribg.png" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)">
+            <img src="game-art/cave end.png" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)">
+            <img src="game-art/buildingsilhrun.png" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)">
+            <img src="game-art/spinelbg.png" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)">
+            <img src="game-art/hkbg.png" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)">
+            <img src="game-art/vskrisbg.png" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)">
+        </div>
+
+		<h2 id="game-art">Character Sprites</h2>
+        <div class="game-gallery">
+			<div class="image-box">
+				<img src="game-art/circle no logo.png" data-zoom="1.5" class="zoom-2x" style="transform-origin: 60% 50%;"  loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)"> 
+            </div>
+			<div class="image-box">
+				<img src="game-art/zoharfaces.png" data-zoom="1.5" class="zoom-0.25x" style="transform-origin: 50% 50%;"  loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)"> 
+            </div>
+			<div class="image-box">
+			    <img src="game-art/karma_special.png" data-zoom="0.5" class="zoom-0.1x" onmouseover="this.src='game-art/karma_special.gif#' + Math.random();" onmouseout="this.src='game-art/karma_special.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)"> 
+            </div>
+			<div class="image-box">
+			    <img src="game-art/echo_idle.png" data-zoom="0.5" class="zoom-0.1x" onmouseover="this.src='game-art/echo_idle.gif#' + Math.random();" onmouseout="this.src='game-art/echo_idle.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)"> 
+            </div>
+			<video src="game-art/MoM.webm" loop muted playsinline loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)"></video>
+			<img src="game-art/Zohar Fire Down.png" onmouseover="this.src='game-art/Zohar Fire Down.gif#' + Math.random();" onmouseout="this.src='game-art/Zohar Fire Down.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)">
+ 			<img src="game-art/Spin.png" onmouseover="this.src='game-art/Spin.gif#' + Math.random();" onmouseout="this.src='game-art/Spin.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)">
+			<img src="game-art/Zohar Switch Red.png" onmouseover="this.src='game-art/Zohar Switch Red.gif#' + Math.random();" onmouseout="this.src='game-art/Zohar Switch Red.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)">
+			<img src="game-art/Fight Double Slash.png" onmouseover="this.src='game-art/Fight Double Slash.gif#' + Math.random();" onmouseout="this.src='game-art/Fight Double Slash.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)">
+			<img src="game-art/Fight Volley Slash.png" onmouseover="this.src='game-art/Fight Volley Slash.gif#' + Math.random();" onmouseout="this.src='game-art/Fight Volley Slash.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)">
+        </div>
+
         <h2 id="art">Illustration</h2>
         <div class="gallery">
             <img src="art/skykrill_HD.png"  loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)">
@@ -436,34 +471,6 @@
             <img src="art/radgunxiga.png" style="object-position: 35% 50%;" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)">
             <img src="art/rainworldsand.png" style="object-position: 60% 50%;" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)">
         </div>  
-
-		<h2 id="game-art">Levels & Environments</h2>
-        <div class="game-gallery">
-			<div class="image-box">
-				<img src="game-art/circle no logo.png" data-zoom="1.5" class="zoom-2x" style="transform-origin: 60% 50%;"  loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)"> 
-            </div>
-            <img src="game-art/cave end.png" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)">
-            <img src="game-art/buildingsilhrun.png" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)">
-            <img src="game-art/deltafuribg.png" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)">
-			<div class="image-box">
-				<img src="game-art/zoharfaces.png" data-zoom="1.5" class="zoom-0.25x" style="transform-origin: 50% 50%;"  onclick="loading="lazy" onclick="open(this.src, this.dataset.zoom)"> 
-            </div>
-			<div class="image-box">
-			    <img src="game-art/karma_special.png" data-zoom="0.5" class="zoom-0.1x" onmouseover="this.src='game-art/karma_special.gif#' + Math.random();" onmouseout="this.src='game-art/karma_special.png'" onclick="loading="lazy" onclick="open(this.src, this.dataset.zoom)"> 
-            </div>
-			<div class="image-box">
-			    <img src="game-art/echo_idle.png" data-zoom="0.5" class="zoom-0.1x" onmouseover="this.src='game-art/echo_idle.gif#' + Math.random();" onmouseout="this.src='game-art/echo_idle.png'" onclick="loading="lazy" onclick="open(this.src, this.dataset.zoom)"> 
-            </div>
-			<video src="game-art/MoM.webm" loop muted playsinline onclick="loading="lazy" onclick="open(this.src, this.dataset.zoom)"></video>
-            <img src="game-art/spinelbg.png" onclick="loading="lazy" onclick="open(this.src, this.dataset.zoom)">
-            <img src="game-art/hkbg.png" onclick="loading="lazy" onclick="open(this.src, this.dataset.zoom)">
-            <img src="game-art/vskrisbg.png" onclick="loading="lazy" onclick="open(this.src, this.dataset.zoom)">
-			<img src="game-art/Zohar Fire Down.png" onmouseover="this.src='game-art/Zohar Fire Down.gif#' + Math.random();" onmouseout="this.src='game-art/Zohar Fire Down.png'" onclick="loading="lazy" onclick="open(this.src, this.dataset.zoom)">
- 			<img src="game-art/Spin.png" onmouseover="this.src='game-art/Spin.gif#' + Math.random();" onmouseout="this.src='game-art/Spin.png'" onclick="loading="lazy" onclick="open(this.src, this.dataset.zoom)">
-			<img src="game-art/Zohar Switch Red.png" onmouseover="this.src='game-art/Zohar Switch Red.gif#' + Math.random();" onmouseout="this.src='game-art/Zohar Switch Red.png'" onclick="loading="lazy" onclick="open(this.src, this.dataset.zoom)">
-			<img src="game-art/Fight Double Slash.png" onmouseover="this.src='game-art/Fight Double Slash.gif#' + Math.random();" onmouseout="this.src='game-art/Fight Double Slash.png'" onclick="loading="lazy" onclick="open(this.src, this.dataset.zoom)">
-			<img src="game-art/Fight Volley Slash.png" onmouseover="this.src='game-art/Fight Volley Slash.gif#' + Math.random();" onmouseout="this.src='game-art/Fight Volley Slash.png'" onclick="loading="lazy" onclick="open(this.src, this.dataset.zoom)">
-        </div>
 
 		<h2 id="animation">Animation</h2>
 		<div class="games-video"> 
@@ -546,11 +553,8 @@
 		}
 
 		// 3. Event Listeners for Closing
-		document.getElementById('lightbox').addEventListener('click', function(e) {
-			// Close if clicking the background OR the container wrapper (but not the image itself)
-			if (e.target === this || e.target.id === 'lightbox-container') {
-				closeLightbox();
-			}
+		document.getElementById('lightbox').addEventListener('click', function() {
+			closeLightbox();
 		});
 
         document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
