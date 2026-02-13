@@ -34,7 +34,7 @@
             text-transform: uppercase;
         }
 
-		/* STICKY NAV - SHADOW ONLY AT THE BOTTOM */
+		/* STICKY NAV */
 		nav {
 			background-color: #ffffff;
 			width: 100%;
@@ -71,7 +71,7 @@
             color: #ff3b4e;
         }
 
-        /* DROPDOWN SYSTEM - NO PIXEL GAPS */
+        /* DROPDOWN SYSTEM */
         .dropdown {
             position: relative;
             display: flex;
@@ -123,16 +123,7 @@
 
         h2[id] { scroll-margin-top: 110px; }
 
-        .video-box {
-            width: 100%;
-            aspect-ratio: 16/9;
-            background: #000;
-            border-radius: 4px;
-            margin: 20px 0;
-            border: 1px solid #333;
-        }
-
-        /* 3-COLUMN GALLERY */
+        /* GALLERY SYSTEMS */
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
@@ -152,7 +143,6 @@
             transition: opacity 0.3s;
         }
 
-		/* SPECIAL GRID FOR GAME ART */
 		.game-gallery {
 			display: grid;
 			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
@@ -160,7 +150,14 @@
 			margin-top: 20px;
 		}
 
-		.game-gallery img {
+		/* THE FIX: GALLERY CARD WRAPPER */
+		.gallery-card {
+			display: flex;
+			flex-direction: column;
+			gap: 8px; /* Space between image and caption */
+		}
+
+		.gallery-card img, .game-gallery > img {
 			width: 100%;
 			height: 200px; 
 			object-fit: cover;
@@ -172,7 +169,7 @@
 		}
 
         .gallery img:hover { opacity: 0.8; }
-        .game-gallery img[src$=".png"]:hover { opacity: 0.8; }
+        .gallery-card img:hover, .game-gallery > img:hover { opacity: 0.8; }
 
 		.gallery video, .game-gallery video {
 			width: 100%;
@@ -184,7 +181,7 @@
 			cursor: pointer;
 		}
 
-		/* 2-COLUMN GAMES SECTION */
+		/* GAMES SECTION */
 		.games-video {
 			display: grid;
 			grid-template-columns: 1fr 1fr; 
@@ -240,17 +237,9 @@
 			opacity: 1;
 			z-index: 6;
 		}
-
-		.video-container:hover::after {
-			opacity: 0;
-			transform: translate(-50%, -50%) scale(1.2); 
-		}
+		.video-container:hover::after { opacity: 0; transform: translate(-50%, -50%) scale(1.2); }
 		
-		@media (max-width: 768px) {
-			.games-video {
-				grid-template-columns: 1fr;
-			}
-		}
+		@media (max-width: 768px) { .games-video { grid-template-columns: 1fr; } }
 
         /* LIGHTBOX */
         #lightbox {
@@ -263,7 +252,7 @@
 			backdrop-filter: blur(10px);
 			-webkit-backdrop-filter: blur(10px);
 			justify-content: center;
-			align-items: center;
+			align-items: center; /* Default: Perfect Center */
 			overflow: hidden;
 			cursor: zoom-out;
         }
@@ -274,6 +263,7 @@
 			justify-content: center;
 			align-items: center;
 			transform-origin: center center;
+			margin-bottom: 5vh;
 		}
 
 		.close-lightbox {
@@ -289,13 +279,9 @@
 			z-index: 3000; 
 			transition: transform 0.2s ease, opacity 0.2s;
 			user-select: none;
-			cursor: pointer;
 		}
         
-        .close-lightbox:hover {
-			color: #ffffff; 
-			
-		}
+        .close-lightbox:hover { color: #ffffff; }
 
 		#lightbox img {
 			width: auto;
@@ -322,12 +308,7 @@
 			margin: auto;
 		}
 
-        footer {
-            text-align: center;
-            padding: 40px 0;
-            opacity: 0.4;
-            font-size: 0.75rem;
-        }
+        footer { text-align: center; padding: 40px 0; opacity: 0.4; font-size: 0.75rem; }
 
 		#jumpToTop {
 			display: none; 
@@ -348,11 +329,7 @@
 			transition: all 0.2s;
 			-webkit-transform: translateZ(0);
 		}
-
-		#jumpToTop:hover {
-			background-color: #ff3b4e;
-			color: #1a1a1a;
-		}
+		#jumpToTop:hover { background-color: #ff3b4e; color: #1a1a1a; }
 		
 		.image-box {
 			width: 100%;
@@ -370,8 +347,54 @@
 			overflow: hidden;
 			object-fit: cover; 
 			transition: transform 0.3s ease; 
+			cursor: pointer; 
 		}
 
+		/* CAPTION STYLES */
+		.design-caption {
+			font-size: 0.7rem;
+			margin: 0;
+			color: #cccccc;
+			line-height: 1.4;
+			border-left: 2px solid #ff3b4e;
+			padding-left: 10px;
+		}
+		/* Only applies when the JavaScript detects a caption */
+		#lightbox.has-caption {
+			align-items: flex-start; 
+			padding-top: 5vh;
+		}
+		.lightbox-caption {
+			position: fixed;
+			bottom: 30vh;            /* Uses 30% of screen height to move it up intelligently */
+			left: 50%;
+			transform: translateX(-50%);
+			background: #000000;     /* Pure solid black */
+			color: #ffffff;
+			padding: 12px 24px;
+			font-weight: 400;
+			font-size: 1rem;
+			border: 2px solid #000000; /* Pure black border kills the "white shadow" illusion */
+			box-shadow: none;        /* Forces zero shadow */
+			border-radius: 4px;
+			z-index: 3001;
+			text-align: center;
+			max-width: 80%;
+		}
+		
+		/* Resume CTA: Standard Red, Turns Black on Hover */
+		.resume-cta {
+			background-color: #ff3b4e !important;
+			color: #ffffff !important;
+			border: 2px solid #ff3b4e !important;
+			transition: all 0.2s ease-in-out;
+		}
+
+		.resume-cta:hover {
+			background-color: #1a1a1a !important;
+			border-color: #1a1a1a !important;
+			color: #ff3b4e !important;
+		}
 		.zoom-2x { transform: scale(2); }   
 		.zoom-1-5x { transform: scale(1.5); } 
 		.zoom-1-2x { transform: scale(1.2); }  
@@ -389,6 +412,7 @@
     </header>
 
     <nav>
+		<a href="CV.pdf" target="_blank" class="resume-cta">RESUME</a>
         <a href="#games">GAMES</a>
         <div class="dropdown">
             <div class="dropdown-trigger">ART ▾</div>
@@ -400,7 +424,6 @@
             </div>
         </div>
         <a href="#contact">CONTACT</a>
-        <a href="CV.pdf" target="_blank" class="accent">RESUME</a>
     </nav>
 
     <div class="wrapper">
@@ -410,81 +433,80 @@
 				<div class="video-overlay-text">Spare `Em Up Full Playthrough</div>
 				<iframe width="100%" height="100%" src="https://www.youtube.com/embed/764jojmIdPM" frameborder="0" allowfullscreen></iframe>
 			</div>
-
 			<div class="video-container">
 				<div class="video-overlay-text">Mechanics Preview</div>
 				<iframe width="100%" height="100%" src="https://www.youtube.com/embed/764jojmIdPM" frameborder="0" allowfullscreen></iframe>
 			</div>
-
 			<div class="video-container">
 				<div class="video-overlay-text">Webm Test</div>
-				<video 
-					src="game-art/MoM.webm" 
-					autoplay loop muted playsinline 
-					onclick="openLightbox(this.src)"
-					style="width:100%; height:100%; object-fit:cover; cursor:pointer;">
-				</video>
+				<video src="game-art/MoM.webm" loop muted playsinline onclick="openLightbox(this.src)" style="width:100%; height:100%; object-fit:cover; cursor:pointer;"></video>
 			</div>
 		</div>
 
 		<h2 id="level-art">Levels & Environments</h2>
         <div class="game-gallery">
-            <img src="game-art/deltafuribg.png" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)">
-            <img src="game-art/cave end.png" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)">
-            <img src="game-art/buildingsilhrun.png" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)">
-            <img src="game-art/spinelbg.png" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)">
-            <img src="game-art/hkbg.png" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)">
-            <img src="game-art/vskrisbg.png" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)">
+			<div class="gallery-card">
+				<img src="game-art/cave end.png" data-caption="Using high-contrast lighting to guide player toward the exit." loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)">
+				<p class="design-caption"><strong>Core Loop:</strong> Vertical traversal section utilizing moving platforms.</p>
+			</div>
+			<div class="gallery-card">
+            <img src="game-art/deltafuribg.png" data-caption="Using high-contrast lighting to guide player toward the exit." loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)">
+				<p class="design-caption"><strong>Core Loop:</strong> Vertical traversal section utilizing moving platforms.</p>
+			</div>
+            <img src="game-art/buildingsilhrun.png" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)">
+            <img src="game-art/spinelbg.png" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)">
+            <img src="game-art/hkbg.png" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)">
+            <img src="game-art/vskrisbg.png" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)">
         </div>
 
 		<h2 id="game-art">Character Sprites</h2>
         <div class="game-gallery">
 			<div class="image-box">
-				<img src="game-art/circle no logo.png" data-zoom="1.5" class="zoom-2x" style="transform-origin: 60% 50%;"  loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)"> 
+				<img src="game-art/circle no logo.png" data-zoom="1.5" class="zoom-2x" style="transform-origin: 60% 50%;"  loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)"> 
             </div>
 			<div class="image-box">
-				<img src="game-art/zoharfaces.png" data-zoom="1.5" class="zoom-0.25x" style="transform-origin: 50% 50%;"  loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)"> 
+				<img src="game-art/zoharfaces.png" data-zoom="1.5" class="zoom-0.25x" style="transform-origin: 50% 50%;"  loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)"> 
             </div>
 			<div class="image-box">
-			    <img src="game-art/karma_special.png" data-zoom="0.5" class="zoom-0.1x" onmouseover="this.src='game-art/karma_special.gif#' + Math.random();" onmouseout="this.src='game-art/karma_special.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)"> 
+			    <img src="game-art/karma_special.png" data-zoom="0.5" class="zoom-0.1x" onmouseover="this.src='game-art/karma_special.gif#' + Math.random();" onmouseout="this.src='game-art/karma_special.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)"> 
             </div>
 			<div class="image-box">
-			    <img src="game-art/echo_idle.png" data-zoom="0.5" class="zoom-0.1x" onmouseover="this.src='game-art/echo_idle.gif#' + Math.random();" onmouseout="this.src='game-art/echo_idle.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)"> 
+			    <img src="game-art/echo_idle.png" data-zoom="0.5" class="zoom-0.1x" onmouseover="this.src='game-art/echo_idle.gif#' + Math.random();" onmouseout="this.src='game-art/echo_idle.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)"> 
             </div>
-			<video src="game-art/MoM.webm" loop muted playsinline loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)"></video>
-			<img src="game-art/Zohar Fire Down.png" onmouseover="this.src='game-art/Zohar Fire Down.gif#' + Math.random();" onmouseout="this.src='game-art/Zohar Fire Down.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)">
- 			<img src="game-art/Spin.png" onmouseover="this.src='game-art/Spin.gif#' + Math.random();" onmouseout="this.src='game-art/Spin.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)">
-			<img src="game-art/Zohar Switch Red.png" onmouseover="this.src='game-art/Zohar Switch Red.gif#' + Math.random();" onmouseout="this.src='game-art/Zohar Switch Red.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)">
-			<img src="game-art/Fight Double Slash.png" onmouseover="this.src='game-art/Fight Double Slash.gif#' + Math.random();" onmouseout="this.src='game-art/Fight Double Slash.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)">
-			<img src="game-art/Fight Volley Slash.png" onmouseover="this.src='game-art/Fight Volley Slash.gif#' + Math.random();" onmouseout="this.src='game-art/Fight Volley Slash.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)">
+			<video src="game-art/MoM.webm" loop muted playsinline loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)"></video>
+ 			<img src="game-art/Spin.png" onmouseover="this.src='game-art/Spin.gif#' + Math.random();" onmouseout="this.src='game-art/Spin.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)">
+			<img src="game-art/Zohar Fire Down.png" onmouseover="this.src='game-art/Zohar Fire Down.gif#' + Math.random();" onmouseout="this.src='game-art/Zohar Fire Down.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)">
+			<img src="game-art/Zohar Switch Red.png" onmouseover="this.src='game-art/Zohar Switch Red.gif#' + Math.random();" onmouseout="this.src='game-art/Zohar Switch Red.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)">
+			<img src="game-art/Fight Double Slash.png" onmouseover="this.src='game-art/Fight Double Slash.gif#' + Math.random();" onmouseout="this.src='game-art/Fight Double Slash.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)">
+			<img src="game-art/Fight Volley Slash.png" onmouseover="this.src='game-art/Fight Volley Slash.gif#' + Math.random();" onmouseout="this.src='game-art/Fight Volley Slash.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)">
         </div>
 
         <h2 id="art">Illustration</h2>
         <div class="gallery">
-            <img src="art/skykrill_HD.png"  loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)">
-            <img src="art/ffxivultima.png" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)">
-            <img src="art/zrdespair.png" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)">
-            <img src="art/dricecreamworld.png" style="object-position: right center" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)">
-            <img src="art/comm0184.png" style="object-position: 70% 50%;" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)">
-            <img src="art/drcrossroad.png" style="object-position: 35% 50%;" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)">
-            <img src="art/drfireworks.png" style="object-position: 15% 50%;" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)">
-            <img src="art/radgunxiga.png" style="object-position: 35% 50%;" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)">
-            <img src="art/rainworldsand.png" style="object-position: 60% 50%;" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)">
+            <img src="art/skykrill_HD.png"  loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)">
+            <img src="art/ffxivultima.png" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)">
+            <img src="art/zrdespair.png" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)">
+            <img src="art/dricecreamworld.png" style="object-position: right center" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)">
+            <img src="art/comm0184.png" style="object-position: 70% 50%;" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)">
+            <img src="art/drcrossroad.png" style="object-position: 35% 50%;" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)">
+            <img src="art/drfireworks.png" style="object-position: 15% 50%;" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)">
+            <img src="art/radgunxiga.png" style="object-position: 35% 50%;" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)">
+            <img src="art/rainworldsand.png" style="object-position: 60% 50%;" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)">
         </div>  
 
 		<h2 id="animation">Animation</h2>
 		<div class="games-video"> 
 			<div class="video-container">
-				<video src="animation/skywebm.webm" data-zoom="1" loop muted playsinline style="width:100%; height:100%; object-fit:contain; cursor:pointer;" onclick="openLightbox(this.src, this.dataset.zoom)"></video>
+				<video src="animation/skywebm.webm" data-zoom="1" loop muted playsinline style="width:100%; height:100%; object-fit:contain; cursor:pointer;" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)"></video>
 			</div>
 			<div class="video-container">
-				<video src="animation/peace.mp4" data-zoom="0.8" loop muted playsinline style="width:100%; height:100%; object-fit:contain; cursor:pointer;" onclick="openLightbox(this.src, this.dataset.zoom)"></video>
+				<video src="animation/peace.mp4" data-zoom="0.8" loop muted playsinline style="width:100%; height:100%; object-fit:contain; cursor:pointer;" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)"></video>
 			</div>
 			<div class="video-container">
-				<video src="animation/choc.mp4" data-zoom="0.8" loop muted playsinline style="width:100%; height:100%; object-fit:contain; cursor:pointer;" onclick="openLightbox(this.src, this.dataset.zoom)"></video>
+				<video src="animation/choc.mp4" data-zoom="0.8" loop muted playsinline style="width:100%; height:100%; object-fit:contain; cursor:pointer;" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)"></video>
 			</div>
 			<div class="video-container">
-				<video src="animation/wiggle.mp4" data-zoom="0.8" loop muted playsinline style="width:100%; height:100%; object-fit:contain; cursor:pointer;" onclick="openLightbox(this.src, this.dataset.zoom)"></video>
+				<video src="animation/wiggle.mp4" data-zoom="0.8" loop muted playsinline style="width:100%; height:100%; object-fit:contain; cursor:pointer;" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)"></video>
 			</div>
 		</div>
 
@@ -505,12 +527,10 @@
     </div>
 
     <script>
-		// 1. Function to stop video and hide lightbox
 		function closeLightbox() {
 			const lightbox = document.getElementById('lightbox');
             const container = document.getElementById('lightbox-container');
 			
-			// Find the video and stop it
 			const video = container.querySelector('video');
 			if (video) {
 				video.pause();
@@ -518,25 +538,29 @@
 				video.load();   
 			}
 
-			// Restore Scrolling
+			// THE FIX: Destroy the old caption so they don't stack
+			const existingCaption = lightbox.querySelector('.lightbox-caption');
+			if (existingCaption) existingCaption.remove();
+
 			document.body.style.overflow = 'auto';
-			
-			// Close UI and clear ONLY the content, not the X button
 			lightbox.style.display = 'none';
 			container.innerHTML = ''; 
 			handleScroll();
 		}
 
-		// 2. Open Lightbox Logic
-		function openLightbox(src, customZoom) {
+		// THE FIX: Added captionText parameter back in
+		function openLightbox(src, customZoom, captionText) {
 			const lightbox = document.getElementById('lightbox');
             const container = document.getElementById('lightbox-container');
 			const isVideo = src.endsWith('.webm') || src.endsWith('.mp4');
 
 			document.body.style.overflow = 'hidden'; 
-            // Clear old media safely
 			container.innerHTML = ''; 
-            container.style.transform = 'scale(1)'; // Reset zoom
+            container.style.transform = 'scale(1)'; 
+
+			// THE FIX: Clean up any glitchy leftover captions first
+			const existingCaption = lightbox.querySelector('.lightbox-caption');
+			if (existingCaption) existingCaption.remove();
 
 			let content = isVideo ? document.createElement('video') : document.createElement('img');
 			content.src = src;
@@ -547,9 +571,19 @@
 				content.controls = true;
 			}
 			
-			// Apply zoom to the container only
-			if (customZoom) {
-				container.style.transform = `scale(${customZoom})`;
+			if (customZoom) { container.style.transform = `scale(${customZoom})`; }
+			
+			// THE FIX: Now this actually reads the dataset.caption!
+			if (captionText) {
+				const cap = document.createElement('div');
+				cap.className = 'lightbox-caption';
+				cap.innerText = captionText;
+				lightbox.appendChild(cap); 
+				lightbox.classList.add('has-caption');
+			}
+			else {
+				// Ensure the layout stays centered if no caption exists
+				lightbox.classList.remove('has-caption'); 
 			}
 
 			if (src.includes('game-art') || src.includes('pixel') || src.includes('skywebm')) {
@@ -558,23 +592,17 @@
 
 			container.appendChild(content);
 			lightbox.style.display = 'flex';
-			document.getElementById("jumpToTop").style.display = "none"; // Hide button
+			document.getElementById("jumpToTop").style.display = "none"; 
 		}
 
-		// 3. Event Listeners for Closing
 		document.getElementById('lightbox').addEventListener('click', function() {
 			closeLightbox();
 		});
 
-        document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
-
 		document.addEventListener('keydown', function(e) {
-			if (e.key === "Escape") {
-				closeLightbox();
-			}
+			if (e.key === "Escape") closeLightbox();
 		});
 
-		// 4. JUMP TO TOP LOGIC
 		function handleScroll() {
 			let btn = document.getElementById("jumpToTop");
 			let scrollPos = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
@@ -593,28 +621,18 @@
 			window.scrollTo({top: 0, behavior: 'auto'});
 		}
 		
-		// 5. MEDIA HOVER LOGIC
 		document.querySelectorAll('.video-container video, .game-gallery video').forEach(v => {
 			v.addEventListener('mouseover', () => v.play());
-			v.addEventListener('mouseout', () => {
-				v.pause();
-				v.currentTime = 0; 
-			});
+			v.addEventListener('mouseout', () => { v.pause(); v.currentTime = 0; });
 		});
 		
 		document.querySelectorAll('.game-gallery img[src$=".gif"]').forEach(img => {
 			const originalPath = img.src;
-
 			img.addEventListener('mouseenter', function() {
 				const tempImg = new Image();
 				const newSrc = originalPath + '#' + Date.now();
-				
 				tempImg.src = newSrc;
-				tempImg.decode().then(() => {
-					this.src = newSrc;
-				}).catch(() => {
-					this.src = newSrc;
-				});
+				tempImg.decode().then(() => { this.src = newSrc; }).catch(() => { this.src = newSrc; });
 			});
 		});
     </script>
