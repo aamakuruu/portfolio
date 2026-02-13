@@ -190,6 +190,52 @@
 			cursor: pointer;
 		}
 
+		/* 2-COLUMN GAMES SECTION */
+		.games-video {
+			display: grid;
+			grid-template-columns: 1fr 1fr; /* Two equal columns */
+			gap: 20px;
+			margin-top: 20px;
+		}
+
+		/* VIDEO CONTAINER FOR TEXT OVERLAY */
+		.video-container {
+			position: relative;
+			width: 100%;
+			aspect-ratio: 16/9;
+			background: #000;
+			border-radius: 4px;
+			overflow: hidden;
+			border: 1px solid #333;
+		}
+		.video-container video {
+			display: block;
+			image-rendering: pixelated; /* Keeps your pixel art WebMs sharp! */
+			image-rendering: crisp-edges;
+		}
+		/* THE TEXT OVERLAY */
+		.video-overlay-text {
+			position: absolute;
+			top: 20px;
+			left: 20px;
+			background: rgba(255, 59, 78, 0.9); /* Your signature red */
+			color: #1a1a1a;
+			padding: 5px 12px;
+			font-weight: 900;
+			font-size: 0.7rem;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			z-index: 10;
+			pointer-events: none; /* So you can still click the video through the text */
+		}
+
+		/* Mobile fix for 2 columns (Stack them on small screens) */
+		@media (max-width: 768px) {
+			.games-video {
+				grid-template-columns: 1fr;
+			}
+		}
+
         /* LIGHTBOX */
         #lightbox {
             display: none;
@@ -216,7 +262,15 @@
 			image-rendering: pixelated; 
 			image-rendering: crisp-edges;
 		}
-
+		#lightbox video.pixel-upscale {
+			width: auto;
+			max-width: 80vw;   /* Keeps it from hitting the screen edges */
+			max-height: 60vh;  /* THE 50% HEIGHT LIMIT */
+			image-rendering: pixelated; 
+			image-rendering: crisp-edges;
+			display: block;
+			margin: auto;      /* Keeps it centered */
+		}
         footer {
             text-align: center;
             padding: 40px 0;
@@ -272,26 +326,42 @@
     </nav>
 
     <div class="wrapper">
-        <h2 id="games">Gameplay Showcase</h2>
-        <div class="video-box">
-			Spare 'Em Up
-            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/764jojmIdPM" frameborder="0" allowfullscreen></iframe>
-            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/764jojmIdPM" frameborder="0" allowfullscreen></iframe>
-        </div>
+		<h2 id="games">Gameplay Showcase</h2>
+		<div class="games-video"> <div class="video-container">
+				<div class="video-overlay-text">Level Design Alpha</div>
+				<iframe width="100%" height="100%" src="https://www.youtube.com/embed/764jojmIdPM" frameborder="0" allowfullscreen></iframe>
+			</div>
 
+			<div class="video-container">
+				<div class="video-overlay-text">Mechanics Preview</div>
+				<iframe width="100%" height="100%" src="https://www.youtube.com/embed/764jojmIdPM" frameborder="0" allowfullscreen></iframe>
+			</div>
+
+			<div class="video-container">
+				<div class="video-overlay-text">Character Controller Test</div>
+				<video 
+					src="game-art/MoM.webm" 
+					autoplay loop muted playsinline 
+					onclick="openLightbox(this.src)"
+					style="width:100%; height:100%; object-fit:cover; cursor:pointer;">
+				</video>
+			</div>
+
+		</div>
         <h2 id="art">Illustration</h2>
         <div class="gallery">
             <!--img src="art/skycatguy_HD.png" onclick="openLightbox(this.src)">
             <img src="art/drralseixmas2_HD.png" onclick="openLightbox(this.src)">
             <img src="art/torambs.png" onclick="openLightbox(this.src)"-->
+			
             <img src="art/skykrill_HD.png" onclick="openLightbox(this.src)">
-            <img src="art/ffxivultima_HD.png" onclick="openLightbox(this.src)">
+            <img src="art/ffxivultima.png" onclick="openLightbox(this.src)">
             <img src="art/zrdespair.png" onclick="openLightbox(this.src)">
             <img src="art/dricecreamworld.png" style="object-position: right center" onclick="openLightbox(this.src)">
             <img src="art/comm0184.png" style="object-position: 70% 50%;" onclick="openLightbox(this.src)">
             <img src="art/drcrossroad.png" style="object-position: 35% 50%;" onclick="openLightbox(this.src)">
             <img src="art/drfireworks.png" style="object-position: 15% 50%;" onclick="openLightbox(this.src)">
-            <img src="art/radgunxiga_HD.png" style="object-position: 35% 50%;" onclick="openLightbox(this.src)">
+            <img src="art/radgunxiga.png" style="object-position: 35% 50%;" onclick="openLightbox(this.src)">
             <img src="art/rainworldsand.png" style="object-position: 60% 50%;" onclick="openLightbox(this.src)">
         </div>  
 		<h2 id="game-art">Game Art</h2>
