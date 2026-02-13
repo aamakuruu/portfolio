@@ -371,7 +371,7 @@
 
 		.lightbox-caption {
             position: fixed;
-            bottom: 12vh;
+            bottom: 32vh;
             left: 50%;
             transform: translateX(-50%);
             background: #000000;     /* Pure Black */
@@ -390,6 +390,20 @@
 		.video-preview-container {
 			position: relative !important; 
 		}
+		
+		/* Ensure Sprites use COVER */
+		.image-box img, 
+		.image-box video {
+			object-fit: cover !important;
+		}
+
+		/* Ensure Animations/Trailers use CONTAIN */
+		.video-container img, 
+		.video-container video {
+			object-fit: contain !important;
+			background-color: #000;
+		}
+		
 		.zoom-2x { transform: scale(2); }   
 		.zoom-1-5x { transform: scale(1.5); } 
 		.zoom-1-2x { transform: scale(1.2); }  
@@ -442,28 +456,28 @@
 		<h2 id="level-art">Levels & Environments</h2>
         <div class="game-gallery">
 			<div class="gallery-card">
-				<img src="game-art/cave end.png" data-caption="Using high-contrast lighting to guide player toward the exit." loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)">
-				<p class="design-caption"><strong>Core Loop:</strong> Vertical traversal section utilizing moving platforms.</p>
+				<img src="game-art/cave end.png" data-caption="The light implies an exit route." loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)">
+				<p class="design-caption">End cave.</p>
 			</div>
             <div class="gallery-card">
-				<img src="game-art/deltafuribg.png" data-caption="Guiding the player's eye using atmospheric perspective and contrasting neon hues." loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)">
-				<p class="design-caption"><strong>Atmosphere:</strong> High-contrast skyline to emphasize vast scale.</p>
+				<img src="game-art/deltafuribg.png" data-caption="RIIIGHT." loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)">
+				<p class="design-caption"><strong>RAIIN:</strong></p>
 			</div>
             <div class="gallery-card">
-				<img src="game-art/buildingsilhrun.png" data-caption="Layered parallax elements designed to enhance the feeling of speed during traversal." loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)">
-				<p class="design-caption"><strong>Parallax Flow:</strong> Silhouette layering for fast-paced movement.</p>
+				<img src="game-art/buildingsilhrun.png" data-caption="before the destruction." loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)">
+				<p class="design-caption">Building intact.</p>
 			</div>
             <div class="gallery-card">
-				<img src="game-art/spinelbg.png" data-caption="Using monolithic structures to dwarf the player character and instill tension." loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)">
-				<p class="design-caption"><strong>Scale Focus:</strong> Monolithic background elements for boss arenas.</p>
+				<img src="game-art/spinelbg.png" data-caption="EPIC" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)">
+				<p class="design-caption">JUST LIKE THE SHOW.</p>
 			</div>
             <div class="gallery-card">
-				<img src="game-art/hkbg.png" data-caption="Utilizing muted mid-tones to ensure foreground level collision remains readable." loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)">
-				<p class="design-caption"><strong>Visual Hierarchy:</strong> Muted backgrounds to support foreground clarity.</p>
+				<img src="game-art/hkbg.png" data-caption="LITERALLY" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)">
+				<p class="design-caption"><strong>JUST LIKE THE GAME</strong></p>
 			</div>
             <div class="gallery-card">
-				<img src="game-art/vskrisbg.png" data-caption="Implementing aggressive color palettes to signal high-danger combat zones." loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)">
-				<p class="design-caption"><strong>Combat Signposting:</strong> Aggressive color schemes for danger zones.</p>
+				<img src="game-art/vskrisbg.png" data-caption="SKY" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)">
+				<p class="design-caption"><strong>RED</strong></p>
 			</div>
         </div>
 
@@ -627,49 +641,49 @@
 			window.scrollTo({top: 0, behavior: 'auto'});
 		}
 		
-		// THE ZERO-FLICKER HOVER LOGIC
 		document.querySelectorAll('.video-preview-container').forEach(container => {
 			container.addEventListener('mouseenter', () => {
 				const videoSrc = container.getAttribute('data-video-src');
 				if(!videoSrc) return;
 				
-				// Create the video element on demand
+				// Failsafe: Don't spawn multiple videos if hovering wildly
+				if (container.querySelector('video')) return; 
+				
 				const video = document.createElement('video');
 				video.src = videoSrc;
 				video.muted = true;
 				video.loop = true;
 				video.playsInline = true;
-				video.autoplay = true; 
+				video.autoplay = true;
 				
-				// Style it to cover the poster perfectly
+				// 1. THE FIX: Spawn the video completely invisible
+				video.style.opacity = '0';
+				video.style.transition = 'opacity 0.1s ease-in'; // Adds a micro-fade for a buttery transition
+				
 				video.style.position = 'absolute';
 				video.style.top = '0';
 				video.style.left = '0';
 				video.style.width = '100%';
 				video.style.height = '100%';
-				video.style.objectFit = 'contain'; 
 				video.style.zIndex = '5';
 				
-				container.appendChild(video);
+				// 2. THE FIX: Wait for the exact moment the first frame is decoded
+				video.addEventListener('loadeddata', () => {
+					video.style.opacity = '1'; // Reveal it only when it's ready!
+				});
 				
-				// Start playback
-				const playPromise = video.play();
-				if (playPromise !== undefined) {
-					playPromise.then(_ => {}).catch(error => {
-						console.log("Autoplay blocked or interrupted");
-					});
-				}
+				container.appendChild(video);
+				video.play().catch(() => {});
 			});
 
 			container.addEventListener('mouseleave', () => {
 				const video = container.querySelector('video');
 				if (video) {
 					video.pause();
-					video.remove(); // Instantly destroys the video and reveals the poster
+					video.remove(); 
 				}
 			});
 		});
-		
 		document.querySelectorAll('.game-gallery img[src$=\".gif\"]').forEach(img => {
 			const originalPath = img.src;
 			img.addEventListener('mouseenter', function() {
