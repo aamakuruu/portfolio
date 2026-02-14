@@ -522,7 +522,7 @@
 
 			/* DISABLE MOUSE-TRACKING OPACITY ON MOBILE */
 			.close-lightbox {
-				opacity: 1 !important; 
+				opacity: 0.5 !important; 
 				bottom: 10vh !important; /* Pulled up slightly for easier thumb reach */
 			}
 
@@ -595,28 +595,31 @@
 				object-fit: cover !important; /* TACTICAL ZOOM ACTIVATED */
 			}
 			.lightbox-caption {
-				position: fixed !important;
-				/* Use dvh to ignore the shifting URL bar on mobile browsers */
-				bottom: calc(30dvh + env(safe-area-inset-bottom, 0px)) !important; 
-				left: 50% !important;
-				transform: translateX(-50%) !important;
-				
-				/* Technical sizing */
-				width: 100vw !important;
-				box-sizing: border-box !important; /* Prevents the border-bottom from stretching the height */
+				position: absolute !important; /* Anchors to the VIDEO, not the screen */
+				bottom: 0 !important;          /* Glues perfectly to the bottom of the footage */
+				left: 0 !important;
+				width: 100% !important;        /* Matches the video width exactly */
+				transform: none !important;
 				
 				background: rgba(0, 0, 0, 0.85);
 				color: #ffffff;
-				padding: 12px 24px;
+				padding: 12px 20px !important;
+				font-size: 0.9rem !important;
 				font-weight: 700;
-				font-size: 1rem;
-				z-index: 3001;
 				text-align: center;
+				z-index: 3001;
 				pointer-events: none;
-				backdrop-filter: blur(5px); 
+				box-sizing: border-box !important;
 				
-				/* This invisible border creates a 'buffer' so the text doesn't hit the bottom edge */
-				border-bottom: 70px solid transparent !important;
+
+				min-height: 32% !important; /* Just tall enough to act as a dialogue letterbox */
+			}
+			#lightbox-close {
+				position: fixed !important;
+				bottom: 36px !important;
+				left: 0 !important;
+				width: 100% !important;
+				text-align: center;
 			}
 		}
 		@media (max-width: 844px) and (orientation: landscape) {
@@ -676,36 +679,69 @@
 			.game-gallery img {
 				height: 100px !important; /* Prevent massive images in landscape */
 			}
+			/* THE SHRINK-WRAP CONTAINER */
 			#lightbox-container {
-				height: 100vh !important;
-				width: 100vw !important;
-				transform: scale(1) !important;
+				position: relative !important;
+				width: fit-content !important;  /* Shrink-wraps to the exact video width */
+				height: fit-content !important; /* Shrink-wraps to the exact video height */
+				margin: auto !important;
+				display: block !important;
+				overflow: hidden !important;    /* Keeps the caption perfectly inside the video bounds */
 			}
 
 			#lightbox-container video {
+				/* This combination ensures the video shrinks to fit whichever side hits the edge first */
+				max-width: 90vw !important;  
+				max-height: 80dvh !important; 
 				width: auto !important;
-				height: 90vh !important; /* Leaves tiny breathing room for UI */
-				object-fit: contain !important; /* NO MORE CROPPING */
+				height: auto !important;
+				
+				object-fit: contain !important;
 				transform: none !important;
 			}
 			.lightbox-caption {
-				position: fixed !important;
-				/* Use dvh to stay locked to the visible screen area */
-				bottom: calc(14dvh + env(safe-area-inset-bottom, 0px)) !important; 
-				left: 50% !important;
-				transform: translateX(-50%) !important;
-				
-				width: 100vw !important;
-				box-sizing: border-box !important;
-				
-				/* Shrink padding and border for narrow landscape screens */
-				padding: 8px 20px !important;
-				font-size: 0.9rem !important;
-				border-bottom: 10px solid transparent !important; 
+				position: absolute !important; /* Anchors to the VIDEO, not the screen */
+				bottom: -40px !important;          /* Glues perfectly to the bottom of the footage */
+				left: 0 !important;
+				width: 100% !important;        /* Matches the video width exactly */
+				transform: none !important;
 				
 				background: rgba(0, 0, 0, 0.85);
+				color: #ffffff;
+				padding: 12px 20px !important;
+				font-size: 0.9rem !important;
+				font-weight: 700;
+				text-align: center;
 				z-index: 3001;
-				backdrop-filter: blur(5px);
+				pointer-events: none;
+				box-sizing: border-box !important;
+				
+				backdrop-filter: blur(5px); 
+
+			}
+			/* FORCE LANDSCAPE TO UN-CROP (Defeating the portrait zoom) */
+			#lightbox.has-caption #lightbox-container {
+				height: fit-content !important; 
+			}
+
+			#lightbox.has-caption #lightbox-container video {
+				width: auto !important;
+				height: auto !important;
+				max-width: 90vw !important;
+				max-height: 90dvh !important;
+				object-fit: contain !important; /* KILLS THE TACTICAL ZOOM IN LANDSCAPE */
+			}
+			#lightbox-close {
+				position: fixed !important;
+				bottom: 4px !important;
+				left: 0 !important;
+				width: 100% !important;
+				text-align: center;
+			}
+			/* DISABLE MOUSE-TRACKING OPACITY ON MOBILE */
+			.close-lightbox {
+				opacity: 0.5 !important; 
+				bottom: 10vh !important; /* Pulled up slightly for easier thumb reach */
 			}
 		}
 		
