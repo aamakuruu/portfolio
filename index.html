@@ -286,23 +286,6 @@
             margin-bottom: 0; 
         }
 
-		.close-lightbox {
-			position: fixed; 
-			top: 30px;
-			right: 40px;
-			color: #ff3b4e; 
-			font-size: 60px; 
-			font-family: 'Montserrat', sans-serif;
-			font-weight: 700;
-			line-height: 1;
-			cursor: pointer;
-			z-index: 3000; 
-			transition: transform 0.2s ease, opacity 0.2s;
-			user-select: none;
-		}
-        
-        .close-lightbox:hover { color: #ffffff; }
-
 		#lightbox img {
 			width: auto;
 			max-width: 90vw;
@@ -396,7 +379,6 @@
             pointer-events: none;
 			backdrop-filter: blur(5px); 
 			border-bottom: 70px solid rgba(0, 0, 0, 0.1);
-			
 		}
 		/* Forces the spawned video to stay inside its specific box */
 		.video-preview-container {
@@ -447,6 +429,39 @@
 		.nav-logo:hover {
 			background: transparent !important;
 			color: #ff3b4e !important;
+		}
+		
+		
+		.close-lightbox {
+			position: fixed; 
+			
+			bottom: 20vh; 
+			right: 20vw;  
+			left: auto;   
+			transform: none; 
+			
+			color: #ffffff; 
+			opacity: 0.2;
+			font-size: 14px; 
+			font-family: 'Montserrat', sans-serif;
+			font-weight: 700;
+			letter-spacing: 1px;
+			text-transform: uppercase;
+			
+			background: rgba(0,0,0,0.5); 
+			padding: 10px 20px; 
+			<!--border: 2px solid #ff3b4e;
+			border-radius: 4px; 
+			border-opacity: 0.8;-->
+			cursor: pointer;
+			z-index: 3005; 
+			transition: all 0.05s ease;
+		}
+
+		.close-lightbox:hover {
+			background: #ff3b4e;
+			color: #ffffff;
+			opacity: 1;
 		}
 		
 		.zoom-2x { transform: scale(2); }   
@@ -506,6 +521,9 @@
 		</div>
 
 		<h2 id="level-art">Levels & Environments</h2>
+			<h3 style="letter-spacing: 4px; font-size: 1.2rem; color: #ff3b4e; margin-bottom: 10px;">PROJECT: SPARE 'EM UP</h3>
+			<div class="level-gallery">
+				</div>
 			<div class="level-gallery">
 			<div class="gallery-card">
 				<div class="video-container video-preview-container" 
@@ -533,6 +551,24 @@
 					<img src="screenshot/spare/2.png" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block;">
 				</div>
 				<p class="design-caption">Collectibles.</p>
+			</div>
+			<div class="gallery-card">
+				<div class="video-container video-preview-container" 
+					 data-caption="Speed up the background.&#10Add stronger enemies." 
+					 data-video-src="screenshot/spare/3.mp4" 
+					 onclick="openLightbox(this.dataset.videoSrc, this.dataset.zoom, this.dataset.caption)">
+					<img src="screenshot/spare/3.png" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block;">
+				</div>
+				<p class="design-caption">Amp up the pace.</p>
+			</div>
+			<div class="gallery-card">
+				<div class="video-container video-preview-container" 
+					 data-caption="Add some variation.&#10Make the player stop holding the fire button." 
+					 data-video-src="screenshot/spare/4.mp4" 
+					 onclick="openLightbox(this.dataset.videoSrc, this.dataset.zoom, this.dataset.caption)">
+					<img src="screenshot/spare/4.png" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block;">
+				</div>
+				<p class="design-caption">Mid-fight collectibles.</p>
 			</div>
 			<div class="gallery-card">
 				<img src="game-art/cave end.png" data-caption="The light implies an exit route." loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)">
@@ -627,7 +663,7 @@
     </div>
 
     <div id="lightbox">
-        <div id="lightbox-close" class="close-lightbox" title="Close">&times;</div>
+		<div id="lightbox-close" class="close-lightbox">CLOSE</div>
         <div id="lightbox-container" class="lightbox-container"></div>
     </div>
 
@@ -654,10 +690,11 @@
 		}
 
 		function openLightbox(src, customZoom, captionText) {
+			const closeBtn = document.getElementById('lightbox-close');
 			const lightbox = document.getElementById('lightbox');
             const container = document.getElementById('lightbox-container');
 			const isVideo = src.endsWith('.webm') || src.endsWith('.mp4');
-
+			
 			document.body.style.overflow = 'hidden'; 
 			container.innerHTML = ''; 
             container.style.transform = 'scale(1)'; 
@@ -692,6 +729,9 @@
 			container.appendChild(content);
 			lightbox.style.display = 'flex';
 			document.getElementById("jumpToTop").style.display = "none"; 
+			
+			if (closeBtn) closeBtn.style.opacity = "0.1";
+			
 		}
 
 		document.getElementById('lightbox').addEventListener('click', function() {
@@ -780,6 +820,28 @@
 				tempImg.src = newSrc;
 				tempImg.decode().then(() => { this.src = newSrc; }).catch(() => { this.src = newSrc; });
 			});
+		});
+		document.addEventListener('mousemove', (e) => {
+			const lightbox = document.getElementById('lightbox');
+			const closeBtn = document.getElementById('lightbox-close');
+
+			// Only run the logic if the lightbox is actually ACTIVE (visible)
+			if (!lightbox || lightbox.style.display !== 'flex') {
+				if (closeBtn) closeBtn.style.opacity = "0.1"; // Keep it faint while hidden
+				return;
+			}
+
+			const mouseX = e.clientX;
+			const screenWidth = window.innerWidth;
+			const startPoint = screenWidth / 2;
+			const targetPoint = screenWidth * 0.8;
+
+			let intensity = (mouseX - startPoint) / (targetPoint - startPoint);
+
+			// Clamping
+			intensity = Math.max(0.1, Math.min(1.0, intensity));
+
+			closeBtn.style.opacity = intensity;
 		});
     </script>
 	<button onclick="scrollToTop()" id="jumpToTop" title="Go to top">Top ▴</button>
