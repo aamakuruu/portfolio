@@ -1054,6 +1054,7 @@
 		
 		document.querySelectorAll('.video-preview-container').forEach(container => {
 			container.addEventListener('mouseenter', () => {
+				if (window.innerWidth <= 844 || window.matchMedia("(hover: none)").matches) return;
 				const videoSrc = container.getAttribute('data-video-src');
 				if(!videoSrc) return;
 				
@@ -1088,6 +1089,7 @@
 			});
 
 			container.addEventListener('mouseleave', () => {
+				if (window.innerWidth <= 844 || window.matchMedia("(hover: none)").matches) return;
 				const video = container.querySelector('video');
 				if (video) {
 					video.pause();
@@ -1098,6 +1100,7 @@
 		document.querySelectorAll('.game-gallery img[src$=\".gif\"]').forEach(img => {
 			const originalPath = img.src;
 			img.addEventListener('mouseenter', function() {
+				if (window.innerWidth <= 844 || window.matchMedia("(hover: none)").matches) return;
 				const tempImg = new Image();
 				const newSrc = originalPath + '#' + Date.now();
 				tempImg.src = newSrc;
