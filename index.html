@@ -40,14 +40,18 @@
 			width: 100%;
 			padding: 15px 0;
 			display: flex;
-			gap: 15px;
-			justify-content: center;
-			align-items: stretch;
+			justify-content: center; /* Keeps the middle buttons perfectly centered */
+			align-items: center; /* THE FIX: changed from 'stretch' to 'center' */
 			position: sticky;
 			top: 0;
 			z-index: 1000;
 			box-shadow: 0 6px 10px -5px rgba(0,0,0,0.3); 
 			border-bottom: 3px solid #1a1a1a; 
+		}
+		.nav-center-group {
+			display: flex;
+			gap: 15px;
+			justify-content: center;
 		}
 
         nav a, .dropdown-trigger {
@@ -156,6 +160,13 @@
 		.game-gallery {
 			display: grid;
 			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+			gap: 15px; 
+			margin-top: 20px;
+		}
+		
+		.level-gallery {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); 
 			gap: 15px; 
 			margin-top: 20px;
 		}
@@ -361,7 +372,7 @@
 
 		/* CAPTION STYLES */
 		.design-caption {
-			font-size: 0.7rem;
+			font-size: 0.8rem;
 			margin: 0;
 			color: #cccccc;
 			line-height: 1.4;
@@ -371,20 +382,21 @@
 
 		.lightbox-caption {
             position: fixed;
-            bottom: 32vh;
+            bottom: 22vh;
             left: 50%;
             transform: translateX(-50%);
-            background: #000000;     /* Pure Black */
+            background: rgba(0, 0, 0, 0.85);
             color: #ffffff;
             padding: 12px 24px;
             font-weight: 700;
             font-size: 1rem;
-            border: 2px solid #000000; /* Kills the grey shadow */
-            border-radius: 4px;
             z-index: 3001;
             text-align: center;
-            max-width: 80%;
+			width: 80vw;
             pointer-events: none;
+			backdrop-filter: blur(5px); 
+			border-bottom: 70px solid rgba(0, 0, 0, 0.1);
+			
 		}
 		/* Forces the spawned video to stay inside its specific box */
 		.video-preview-container {
@@ -404,6 +416,39 @@
 			background-color: #000;
 		}
 		
+		.nav-logo {
+			position: absolute; 
+			
+			/* THE FIX: Exact Level Coordinates */
+			left: 40px; /* Anchor it to the left wall */
+			top: 50%; /* Push it 50% down */
+			transform: translateY(-50%); /* Pull it up by half its own height for true center */
+			z-index: 1001; /* Force it to render ON TOP of the nav background */
+			
+			border: none !important;
+			font-weight: 900 !important;
+			font-size: 0.9rem !important;
+			letter-spacing: 2px !important;
+			color: #000000 !important; 
+			
+			/* Smooth transition for the 'pop-in' effect */
+			opacity: 0;
+			visibility: hidden;
+			transition: opacity 0.2s ease, visibility 0.2s ease;
+			cursor: pointer;
+		}
+
+		/* This class gets added by JS when scrolling down */
+		.nav-logo.visible {
+			opacity: 1;
+			visibility: visible;
+		}
+
+		.nav-logo:hover {
+			background: transparent !important;
+			color: #ff3b4e !important;
+		}
+		
 		.zoom-2x { transform: scale(2); }   
 		.zoom-1-5x { transform: scale(1.5); } 
 		.zoom-1-2x { transform: scale(1.2); }  
@@ -417,22 +462,29 @@
 <body>
 
     <header>
-        <h1>AMAR MAKRUF</h1>
-    </header>
+		<h1>AMAR MAKRUF</h1>
+	</header>
 
     <nav>
-        <a href="CV.pdf" target="_blank" class="resume-cta">RESUME</a>
-        <a href="#games">GAMES</a>
-        <div class="dropdown">
-            <div class="dropdown-trigger">ART ▾</div>
-            <div class="dropdown-content">
-                <a href="#level-art">Levels & Environments</a>
-                <a href="#game-art">Character Sprites</a>
-                <a href="#art">Illustration</a>
-                <a href="#animation">Animation</a>
-            </div>
-        </div>
-        <a href="#contact">CONTACT</a>
+		<a href="javascript:void(0)" onclick="scrollToTop()" class="nav-logo" id="navLogo">AMAR MAKRUF</a>
+		<div class="nav-center-group">
+			<a href="CV.pdf" target="_blank" class="resume-cta">RESUME</a>
+			<div class="dropdown">
+				<div class="dropdown-trigger">GAMES ▾</div>
+				<div class="dropdown-content">
+					<a href="#games">Gameplay Showcase</a>
+					<a href="#level-art">Levels & Environments</a>
+				</div>
+			</div>        <div class="dropdown">
+				<div class="dropdown-trigger">ART ▾</div>
+				<div class="dropdown-content">
+					<a href="#game-art">Character Sprites</a>
+					<a href="#art">Illustration</a>
+					<a href="#animation">Animation</a>
+				</div>
+			</div>
+			<a href="#contact">CONTACT</a>
+		</div>
     </nav>
 
     <div class="wrapper">
@@ -454,7 +506,34 @@
 		</div>
 
 		<h2 id="level-art">Levels & Environments</h2>
-        <div class="game-gallery">
+			<div class="level-gallery">
+			<div class="gallery-card">
+				<div class="video-container video-preview-container" 
+					 data-caption="Introduce basic enemies." 
+					 data-video-src="screenshot/spare/0.mp4" 
+					 onclick="openLightbox(this.dataset.videoSrc, this.dataset.zoom, this.dataset.caption)">					 
+					<img src="screenshot/spare/0.png" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block;">
+				</div>
+				<p class="design-caption">Beginning level.</p>
+			</div>
+			<div class="gallery-card">
+				<div class="video-container video-preview-container" 
+					 data-caption="Red enemies, can be SPARED instantly." 
+					 data-video-src="screenshot/spare/1.mp4" 
+					 onclick="openLightbox(this.dataset.videoSrc, this.dataset.zoom, this.dataset.caption)">
+					<img src="screenshot/spare/1.png" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block;">
+				</div>
+				<p class="design-caption">New enemy type.</p>
+			</div>
+			<div class="gallery-card">
+				<div class="video-container video-preview-container" 
+					 data-caption="Introduce collectibles to the player." 
+					 data-video-src="screenshot/spare/2.mp4" 
+					 onclick="openLightbox(this.dataset.videoSrc, this.dataset.zoom, this.dataset.caption)">
+					<img src="screenshot/spare/2.png" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block;">
+				</div>
+				<p class="design-caption">Collectibles.</p>
+			</div>
 			<div class="gallery-card">
 				<img src="game-art/cave end.png" data-caption="The light implies an exit route." loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)">
 				<p class="design-caption">End cave.</p>
@@ -625,12 +704,21 @@
 
 		function handleScroll() {
 			let btn = document.getElementById("jumpToTop");
+			let navLogo = document.getElementById("navLogo"); // Get the logo
 			let scrollPos = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
 
+			// Toggle Jump to Top button
 			if (scrollPos > 300) {
 				btn.style.setProperty("display", "block", "important");
 			} else {
 				btn.style.display = "none";
+			}
+
+			// Show logo in nav after scrolling 150px
+			if (scrollPos > 150) {
+				navLogo.classList.add("visible");
+			} else {
+				navLogo.classList.remove("visible");
 			}
 		}
 
