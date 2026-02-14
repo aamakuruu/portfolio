@@ -7,6 +7,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     
     <style>
+		*, *:before, *:after {
+			box-sizing: border-box !important;
+		}
         body { 
             background-color: #1a1a1a; 
             color: #ffffff; 
@@ -592,10 +595,16 @@
 				object-fit: cover !important; /* TACTICAL ZOOM ACTIVATED */
 			}
 			.lightbox-caption {
-				position: fixed;
-				bottom: 30vh;
-				left: 50%;
-				transform: translateX(-50%);
+				position: fixed !important;
+				/* Use dvh to ignore the shifting URL bar on mobile browsers */
+				bottom: calc(30dvh + env(safe-area-inset-bottom, 0px)) !important; 
+				left: 50% !important;
+				transform: translateX(-50%) !important;
+				
+				/* Technical sizing */
+				width: 100vw !important;
+				box-sizing: border-box !important; /* Prevents the border-bottom from stretching the height */
+				
 				background: rgba(0, 0, 0, 0.85);
 				color: #ffffff;
 				padding: 12px 24px;
@@ -603,10 +612,11 @@
 				font-size: 1rem;
 				z-index: 3001;
 				text-align: center;
-				width: 100vw;
 				pointer-events: none;
 				backdrop-filter: blur(5px); 
-				border-bottom: 70px solid rgba(0, 0, 0, 0.1);
+				
+				/* This invisible border creates a 'buffer' so the text doesn't hit the bottom edge */
+				border-bottom: 70px solid transparent !important;
 			}
 		}
 		@media (max-width: 844px) and (orientation: landscape) {
@@ -678,22 +688,24 @@
 				object-fit: contain !important; /* NO MORE CROPPING */
 				transform: none !important;
 			}
-				.lightbox-caption {
-				position: fixed;
-				bottom: 2vh;
-				left: 50%;
-				transform: translateX(-50%);
+			.lightbox-caption {
+				position: fixed !important;
+				/* Use dvh to stay locked to the visible screen area */
+				bottom: calc(14dvh + env(safe-area-inset-bottom, 0px)) !important; 
+				left: 50% !important;
+				transform: translateX(-50%) !important;
+				
+				width: 100vw !important;
+				box-sizing: border-box !important;
+				
+				/* Shrink padding and border for narrow landscape screens */
+				padding: 8px 20px !important;
+				font-size: 0.9rem !important;
+				border-bottom: 10px solid transparent !important; 
+				
 				background: rgba(0, 0, 0, 0.85);
-				color: #ffffff;
-				padding: 12px 24px;
-				font-weight: 700;
-				font-size: 1rem;
 				z-index: 3001;
-				text-align: center;
-				width: 100vw;
-				pointer-events: none;
-				backdrop-filter: blur(5px); 
-				border-bottom: 70px solid rgba(0, 0, 0, 0.1);
+				backdrop-filter: blur(5px);
 			}
 		}
 		
