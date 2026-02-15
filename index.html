@@ -352,7 +352,7 @@
 			border-left: 2px solid #ff3b4e;
 			padding-left: 10px;
 			top: 10px;
-			margin-top: -64px !important; /* Pulls the text upward */
+			margin-top: -84px !important; /* Pulls the text upward */
 			z-index: 5;
 			pointer-events: none;
 		}
@@ -385,7 +385,7 @@
 					 2px  4px 0 #000, -2px  4px 0 #000,  2px -4px 0 #000, -2px -4px 0 #000,
 					/* Outer Glow to smooth the edges */
 					 0px  0px 15px rgba(0,0,0,1) !important;
-			min-height: 36% !important; /* Just tall enough to act as a dialogue letterbox */
+			min-height: 40% !important; /* Just tall enough to act as a dialogue letterbox */
 		}
 		.highlight {
 			-webkit-text-fill-color: #FFFF00 !important;			
@@ -504,7 +504,7 @@
 			display: none !important;
 		}
 		
-		/* UNIFIED MOBILE OVERRIDES */
+		/* MOBILE CSS */
 		@media (max-width: 844px) {
 			.wrapper {
 				margin: 40px auto !important;
@@ -554,11 +554,6 @@
 				display: block !important;
 			}
 
-
-			/* TEXT LEGIBILITY FIX */
-			.design-caption {
-				font-size: 1rem !important; /* Larger for mobile thumbs */
-			}
 
 			/* DISABLE MOUSE-TRACKING OPACITY ON MOBILE */
 			.close-lightbox {
@@ -664,7 +659,7 @@
 						 2px  4px 0 #000, -2px  4px 0 #000,  2px -4px 0 #000, -2px -4px 0 #000,
 						/* Outer Glow to smooth the edges */
 						 0px  0px 15px rgba(0,0,0,1) !important;
-				min-height: 44% !important; /* Just tall enough to act as a dialogue letterbox */
+				min-height: 48% !important; /* Just tall enough to act as a dialogue letterbox */
 			}
 			#lightbox-close {
 				position: fixed !important;
@@ -676,7 +671,16 @@
 				-webkit-tap-highlight-color: transparent !important; 
 				outline: none !important;
 			}
+			.design-caption {
 			
+				font-size: 0.6rem !important;
+				margin: 0;
+				line-height: 1.1;
+				border-left: 2px solid #ff3b4e;
+				padding-left: 10px;
+				top: 10px;
+				margin-top: -50px !important; /* Pulls the text upward */
+			}
 		}
 		@media (max-width: 844px) and (orientation: landscape) {
 			.wrapper {
@@ -876,71 +880,83 @@
 			<div class="gallery-card">
 				<div class="video-container video-preview-container" 
 					 data-caption="
-					 I made a <span class='highlight'>Spare</span> system that rewards trigger discipline over mindless firing. <br>
-					 By requiring players to weaken enemies before <span class='highlight'>executing a finisher</span>, the game rewards <br>precise shooting and multi-target spares with higher score multipliers.
-					 " 
+					 Instead of mindlessly holding the fire button, players are encouraged to perform a <span class='highlight'>finisher</span>, by weakening the enemies without killing them.<br><br>
+					 The more spared enemies at once, the higher the scoring multiplier.<br>
+					 Players must carefully decide on when to engage and when to <span class='highlight'>spare</span>." 
 					 data-video-src="screenshot/spare/0.mp4" 
 					 onclick="openLightbox(this.dataset.videoSrc, this.dataset.zoom, this.dataset.caption)">					 
 					<img src="screenshot/spare/0.png" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block;">
 				</div>
-				<p class="design-caption"><strong>Weaponized Pacifism: Precision-Based Finishers</strong><br><i style="display: block; padding-right: 15px; text-align: right;">Read more...</i></p>
+				<p class="design-caption"><strong>Precision Based Shooter</strong><br>Developed a Spare system that encourages trigger discipline and selective targeting.<i style="display: block; padding-right: 15px; text-align: right; font-weight: bold; text-decoration: underline;;">Read more...</i></p>
 			</div>
 			<div class="gallery-card">
 				<div class="video-container video-preview-container" 
-					 data-caption="Collectibles can be <span class='highlight'>destroyed</span> by gunfire, forcing players to exercise strict trigger control. <br>
-					 Players will be rewarded with satisfying sound cues and increased score multiplier upon successful retrieval." 
+					 data-caption="By placing the <span class='highlight'>collectibles</span> near the enemies. This makes the player cautious about firing randomly.<br><br>
+					 Players will be rewarded with satisfying sound cues and increased score multiplier upon collecting them.<br><br>
+					 It adds another objective for the players to do, beyond just combat." 
 					 data-video-src="screenshot/spare/4.mp4" 
 					 onclick="openLightbox(this.dataset.videoSrc, this.dataset.zoom, this.dataset.caption)">
 					<img src="screenshot/spare/4.png" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block;">
 				</div>
-				<p class="design-caption"><strong>Fragile Loot: Avoiding Collateral Damage</strong><br><i style="display: block; padding-right: 15px; text-align: right;">Read more...</i></p>
+				<p class="design-caption"><strong>Destroyable Collectibles</strong><br>Collectibles can be destroyed by shooting them, forcing players to exercise strict trigger control.<i style="display: block; padding-right: 15px; text-align: right; font-weight: bold; text-decoration: underline;;">Read more...</i></p>
 			</div>
 			<div class="gallery-card">
 				<div class="video-container video-preview-container" 
-					 data-caption="I used the collectibles to <span class='highlight'>funnel the player</span> through hazardous spikes, <br>acting as a natural guide.<br>
-					 Making the player less confused during high speed segments while <br>rewarding them with score increasing items." 
+					 data-caption="To prevent players from getting overwhelmed by the hazardous spikes.<br><br>
+					 I placed collectibles in safe zones to encourage players to navigate through hazards effectively.<br><br>
+					 While the player also has to shoot the cracked walls.<br>
+					 Players also need to be careful not shoot to the collectibles.
+					 "
 					 data-video-src="screenshot/spare/7.mp4" 
 					 onclick="openLightbox(this.dataset.videoSrc, this.dataset.zoom, this.dataset.caption)">
 					<img src="screenshot/spare/7.png" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block;">
 				</div>
-				<p class="design-caption"><strong>Navigating Environmental Hazards</strong><br><i style="display: block; padding-right: 15px; text-align: right;">Read more...</i></p>
+				<p class="design-caption"><strong>Environmental Hazards</strong><br>Using collectibles to safely lead the player through the hazards.<i style="display: block;"><br></i><i style="display: block; padding-right: 15px; text-align: right; font-weight: bold; text-decoration: underline;;">Read more...</i></p>
 			</div>
 			<div class="gallery-card">
 				<div class="video-container video-preview-container" 
-					 data-caption="I implemented a <span class='highlight'>Parallax Perspective</span> for the background that reacts on player's movement.<br>
-					 Simulating a 3D depth within a 2D engine, <br>creating a more immersive and reactive environment." 
+					 data-caption="The upper and lower planes shift based on the player's position, providing a sense of depth.<br>
+					 This creates 3D depth within a 2D environment.<br><br>
+					 
+					 The spinning speed also behaves according to the boss' state.<br>
+					 It slows down when the boss is vulnerable.
+					 " 
 					 data-video-src="screenshot/spare/10.mp4" 
 					 onclick="openLightbox(this.dataset.videoSrc, this.dataset.zoom, this.dataset.caption)">
 					<img src="screenshot/spare/10.png" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block;">
 				</div>
-				<p class="design-caption"><strong>Dynamic Perspective & Depth</strong><br><i style="display: block; padding-right: 15px; text-align: right;">Read more...</i></p>
+				<p class="design-caption"><strong>Dynamic Background</strong><br>Implemented a dynamic background that reacts to player's movement.<i style="display: block; padding-right: 15px; text-align: right; font-weight: bold; text-decoration: underline;;">Read more...</i></p>
 			</div>
 			<div class="gallery-card">
 				<div class="video-container video-preview-container" 
-					 data-caption=" I used the <span class='highlight'>environmental clouds</span> as a mask to hide the scene transition, <br>creating a seamless shift between areas.
-					 <br>This provides the illusion of travel by swapping the backgrounds under the clouds.
-					 <br>Maintaining immersion without breaking the game's pace. " 
+					 data-caption="I changed the background once the cloud covered the entire screen.<br>
+					 So that it doesn't feel too sudden.<br><br>
+					 Changing the background also gives the illusion that the player is going somewhere.<br>
+					 While freshening up the visuals instead of having to look only at clouds.
+					 
+					 " 
 					 data-video-src="screenshot/spare/5.mp4" 
 					 onclick="openLightbox(this.dataset.videoSrc, this.dataset.zoom, this.dataset.caption)">
 					<img src="screenshot/spare/5.png" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block;">
 				</div>
-				<p class="design-caption"><strong>Seamless Level Transition</strong><br><i style="display: block; padding-right: 15px; text-align: right;">Read more...</i></p>
+				<p class="design-caption"><strong>Seamless Level Transition</strong><br>Using the clouds as a way to create a scene transition.<br><br><i style="display: block; padding-right: 15px; text-align: right; font-weight: bold; text-decoration: underline;;">Read more...</i></p>
 			</div>
 			<div class="gallery-card">
 				<div class="video-container video-preview-container" 
-					 data-caption="I added an epic explosion to signal the boss' defeat, followed by a victory pose and musical cue.
-					 This provides a highly satisfying feel and immediate clarity that <span class='highlight'>victory</span> has been achieved, reinforcing the game's sense of progression." 
+					 data-caption="The explosion is used to change the background by covering the entire screen.<br>
+					 Followed by a victory pose and musical cue.<br><br>
+					 This gives the player a satisfying feel that the players have overcome the challenge." 
 					 data-video-src="screenshot/spare/11.mp4" 
 					 onclick="openLightbox(this.dataset.videoSrc, this.dataset.zoom, this.dataset.caption)">
 					<img src="screenshot/spare/11.png" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block;">
 				</div>
-				<p class="design-caption"><strong>Level Closure</strong><br><i style="display: block; padding-right: 15px; text-align: right;">Read more...</i></p>
+				<p class="design-caption"><strong>Level Closure</strong><br>Epic explosion to finish off the level.<br><br><i style="display: block; padding-right: 15px; text-align: right; font-weight: bold; text-decoration: underline;;">Read more...</i></p>
 			</div>
 
 			
 			
 			
-			<h3 style="letter-spacing: 4px; font-size: 1.2rem; color: #ff3b4e; margin-bottom: -30px;">PROJECT: DELTAFURI</h3>
+			<h3 style="letter-spacing: 4px; font-size: 1.2rem; color: #ff3b4e; margin-bottom: -30px;">Vertical Slices</h3>
 				<div class="level-gallery">
 				</div>
 			<div class="gallery-card">
