@@ -744,7 +744,19 @@
 			}
 			
 		}
-		
+		/* LIGHTBOX SPRITE OVERRIDE */
+		#lightbox.sprite-mode #lightbox-container img {
+			image-rendering: pixelated !important;
+			max-width: 50vw !important; /* Prevents tiny sprites from stretching too much */
+			max-height: 40vh !important;
+			object-fit: contain !important; /* Forces the whole sprite to show */
+			transform: none !important;     /* Disables any zoom/cropping */
+		}
+
+		#lightbox.sprite-mode #lightbox-container {
+			height: auto !important;
+			overflow: visible !important;
+		}
 	</style>
 </head>
 <body>
@@ -766,7 +778,7 @@
 			</div>        <div class="dropdown">
 				<div class="dropdown-trigger">ART ▾</div>
 				<div class="dropdown-content">
-					<a href="#game-art">Character Sprites</a>
+					<a href="#game-art">Game Assets</a>
 					<a href="#art">Illustration</a>
 					<a href="#animation">Animation</a>
 				</div>
@@ -865,30 +877,30 @@
 			</div>
         </div>
 
-		<h2 id="game-art">Character Sprites</h2>
+		<h2 id="game-art">Game Assets</h2>
         <div class="game-gallery">
 			<div class="image-box">
-				<img src="game-art/circle no logo.png" data-zoom="1.5" class="zoom-2x" style="transform-origin: 60% 50%;" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)"> 
+				<img src="game-art/circle no logo.png" data-zoom="1.5" class="zoom-2x" style="transform-origin: 60% 50%;" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, '', true)"> 
             </div>
 			<div class="image-box">
-				<img src="game-art/zoharfaces.png" data-zoom="1.5" class="zoom-0.25x" style="transform-origin: 50% 50%;" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)"> 
+				<img src="game-art/zoharfaces.png" data-zoom="1.5" class="zoom-0.25x" style="transform-origin: 50% 50%;" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, '', true)"> 
             </div>
 			<div class="image-box">
-			    <img src="game-art/karma_special.png" data-zoom="0.5" class="zoom-0.1x" onmouseover="this.src='game-art/karma_special.gif#' + Math.random();" onmouseout="this.src='game-art/karma_special.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)"> 
+			    <img src="game-art/karma_special.png" data-zoom="0.5" class="zoom-0.1x" onmouseover="this.src='game-art/karma_special.gif#' + Math.random();" onmouseout="this.src='game-art/karma_special.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, '', true)"> 
             </div>
 			<div class="image-box">
-			    <img src="game-art/echo_idle.png" data-zoom="0.5" class="zoom-0.1x" onmouseover="this.src='game-art/echo_idle.gif#' + Math.random();" onmouseout="this.src='game-art/echo_idle.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)"> 
+			    <img src="game-art/echo_idle.png" data-zoom="0.5" class="zoom-0.1x" onmouseover="this.src='game-art/echo_idle.gif#' + Math.random();" onmouseout="this.src='game-art/echo_idle.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, '', true)"> 
             </div>
 
             <div class="video-preview-container image-box" data-video-src="game-art/MoM.webm" onclick="openLightbox(this.dataset.videoSrc)">
                 <img src="game-art/MoM.png" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;">
             </div>
 
- 			<img src="game-art/Spin.png" onmouseover="this.src='game-art/Spin.gif#' + Math.random();" onmouseout="this.src='game-art/Spin.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)">
-			<img src="game-art/Zohar Fire Down.png" onmouseover="this.src='game-art/Zohar Fire Down.gif#' + Math.random();" onmouseout="this.src='game-art/Zohar Fire Down.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)">
-			<img src="game-art/Zohar Switch Red.png" onmouseover="this.src='game-art/Zohar Switch Red.gif#' + Math.random();" onmouseout="this.src='game-art/Zohar Switch Red.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)">
-			<img src="game-art/Fight Double Slash.png" onmouseover="this.src='game-art/Fight Double Slash.gif#' + Math.random();" onmouseout="this.src='game-art/Fight Double Slash.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)">
-			<img src="game-art/Fight Volley Slash.png" onmouseover="this.src='game-art/Fight Volley Slash.gif#' + Math.random();" onmouseout="this.src='game-art/Fight Volley Slash.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)">
+ 			<img src="game-art/Spin.png" onmouseover="this.src='game-art/Spin.gif#' + Math.random();" onmouseout="this.src='game-art/Spin.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, '', true)"> 
+			<img src="game-art/Zohar Fire Down.png" onmouseover="this.src='game-art/Zohar Fire Down.gif#' + Math.random();" onmouseout="this.src='game-art/Zohar Fire Down.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, '', true)"> 
+			<img src="game-art/Zohar Switch Red.png" onmouseover="this.src='game-art/Zohar Switch Red.gif#' + Math.random();" onmouseout="this.src='game-art/Zohar Switch Red.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, '', true)"> 
+			<img src="game-art/Fight Double Slash.png" onmouseover="this.src='game-art/Fight Double Slash.gif#' + Math.random();" onmouseout="this.src='game-art/Fight Double Slash.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, '', true)"> 
+			<img src="game-art/Fight Volley Slash.png" onmouseover="this.src='game-art/Fight Volley Slash.gif#' + Math.random();" onmouseout="this.src='game-art/Fight Volley Slash.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, '', true)"> 
         </div>
 
         <h2 id="art">Illustration</h2>
@@ -958,57 +970,73 @@
 			handleScroll();
 		}
 
-		function openLightbox(src, customZoom, captionText) {
-			const closeBtn = document.getElementById('lightbox-close');
+		function openLightbox(src, customZoom, captionText, isSprite = false) {
 			const lightbox = document.getElementById('lightbox');
-            const container = document.getElementById('lightbox-container');
-			const isVideo = src.endsWith('.webm') || src.endsWith('.mp4');
-			
-			
-			document.body.style.overflow = 'hidden'; 
+			const container = document.getElementById('lightbox-container');
+			const closeBtn = document.getElementById('lightbox-close');
+
+			// 1. SELF-REPAIRING CAPTION (Finds it, or builds it once)
+			let caption = lightbox.querySelector('.lightbox-caption');
+			if (!caption) {
+				caption = document.createElement('div');
+				caption.className = 'lightbox-caption';
+				lightbox.appendChild(caption);
+			}
+
+			// 2. DEFENSIVE DATA HANDLING
+			const safeCaption = (captionText === undefined || captionText === null) ? "" : String(captionText);
+
+			// 3. RESET STATE
 			container.innerHTML = ''; 
-            container.style.transform = 'scale(1)'; 
+			container.style.transform = 'scale(1)';
+			lightbox.classList.remove('has-caption', 'sprite-mode');
+			document.body.style.overflow = 'hidden';
 
-			const existingCaption = lightbox.querySelector('.lightbox-caption');
-			if (existingCaption) existingCaption.remove();
-            lightbox.classList.remove('has-caption');
+			// 4. CAPTION INJECTION
+			if (safeCaption.trim() !== "") {
+				caption.innerText = safeCaption;
+				caption.style.display = 'block';
+				lightbox.classList.add('has-caption');
+			} else {
+				caption.style.display = 'none';
+			}
 
+			// 5. CONTENT LOGIC
+			const isVideo = src.endsWith('.webm') || src.endsWith('.mp4');
 			let content = isVideo ? document.createElement('video') : document.createElement('img');
-			/* FORCE GIF RESTART IN LIGHTBOX */
+
 			if (!isVideo && src.toLowerCase().endsWith('.gif')) {
 				content.src = src.split('?')[0].split('#')[0] + '?t=' + Date.now();
 			} else {
 				content.src = src;
 			}
-			
-            if (isVideo) {
+
+			if (isVideo) {
 				content.autoplay = true;
 				content.loop = true;
 				content.controls = true;
 			}
-			
-			if (customZoom) { container.style.transform = `scale(${customZoom})`; }
-			
-			if (captionText) {
-				const cap = document.createElement('div');
-				cap.className = 'lightbox-caption';
-				cap.innerText = captionText;
-				lightbox.appendChild(cap); 
-                lightbox.classList.add('has-caption'); // Shift layout UP
-			}
 
-			if (src.includes('game-art') || src.includes('pixel') || src.includes('skywebm')) {
+			// 6. SPRITE MODE & STYLING
+			if (isSprite) { 
+				lightbox.classList.add('sprite-mode'); 
+			}
+			if (customZoom) { 
+				container.style.transform = `scale(${customZoom})`; 
+			}
+			if (src.includes('game-art') || src.includes('pixel')) {
 				content.classList.add('pixel-upscale');
 			}
 
+			// 7. DEPLOY
 			container.appendChild(content);
 			lightbox.style.display = 'flex';
-			document.getElementById("jumpToTop").style.display = "none"; 
 			
+			const topBtn = document.getElementById("jumpToTop");
+			if (topBtn) topBtn.style.display = "none";
 			if (closeBtn) closeBtn.style.opacity = "0.1";
-			
 		}
-
+		
 		document.getElementById('lightbox').addEventListener('click', function() {
 			closeLightbox();
 		});
