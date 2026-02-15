@@ -479,7 +479,26 @@
 		
         .accent { color: #ff3b4e; text-decoration: none; font-weight: 700; }
 		
-		
+		/* 1. NUKE THE CUSTOM PLAY BUTTON FOR YOUTUBE */
+		.youtube-vid::after {
+			display: none !important;
+		}
+
+		/* 2. THE Z-INDEX POP (Reveals the YouTube controls) */
+		.youtube-vid {
+			z-index: 1 !important; /* Stays quietly behind the caption normally */
+			transition: z-index 0.2s ease;
+		}
+
+		/* When the mouse enters the card, the video snaps to the front */
+		.gallery-card:hover .youtube-vid {
+			z-index: 10 !important; 
+		}
+
+		/* 3. THE MOBILE FALLBACK (Guarantees touch access) */
+		.design-caption {
+			pointer-events: none !important; /* Allows taps to pass directly through the text box into the video */
+		}
 		
 		/* UNIFIED MOBILE OVERRIDES */
 		@media (max-width: 844px) {
@@ -848,7 +867,7 @@
 		<h2 id="games">Gameplay Showcase</h2>
 		<div class="games-video"> 
 			<div class="gallery-card">
-				<div class="video-container">
+				<div class="video-container youtube-vid">
 					<iframe width="100%" height="100%" src="https://www.youtube.com/embed/764jojmIdPM" frameborder="0" allowfullscreen></iframe>
 				</div>
 				<p class="design-caption">Full playthrough of Spare 'Em Up with an S++ rank.</p>
