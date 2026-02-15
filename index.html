@@ -172,7 +172,8 @@
 		.level-gallery {
 			display: grid;
 			grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); 
-			gap: 15px; 
+			column-gap: 15px; 
+			row-gap: 55px;    
 			margin-top: 20px;
 		}
 
@@ -351,26 +352,39 @@
 			border-left: 2px solid #ff3b4e;
 			padding-left: 10px;
 			top: 10px;
-			margin-top: -34px !important; /* Pulls the text upward */
+			margin-top: -64px !important; /* Pulls the text upward */
 			z-index: 5
 		}
 
 		.lightbox-caption {
             position: fixed;
-            bottom: 14vh;
+            bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.85);
             color: #ffffff;
             padding: 12px 24px;
             font-weight: 700;
             font-size: 1rem;
             z-index: 3001;
             text-align: center;
-			width: 100vw;
+			width: 90%;      
+			max-width: 600px;
             pointer-events: none;
-			backdrop-filter: blur(5px); 
-			border-bottom: 100px solid rgba(0, 0, 0, 0.1);
+			/* 1. LOWER OPACITY & BLUR */
+			background: rgba(0, 0, 0, 0.2) !important; /* Alpha lowered from 0.8 to 0.4 */
+			backdrop-filter: blur(1px) !important;    /* Blur lowered from 5px to 3px */
+			
+			text-shadow: 
+					/* 4px Cardinals */
+					 4px  0px 0 #000, -4px  0px 0 #000, 0px  4px 0 #000, 0px -4px 0 #000,
+					/* 4px Diagonals */
+					 3px  3px 0 #000, -3px  3px 0 #000, 3px -3px 0 #000, -3px -3px 0 #000,
+					/* 4px Sub-Diagonals (Filling the gaps) */
+					 4px  2px 0 #000,  4px -2px 0 #000, -4px  2px 0 #000, -4px -2px 0 #000,
+					 2px  4px 0 #000, -2px  4px 0 #000,  2px -4px 0 #000, -2px -4px 0 #000,
+					/* Outer Glow to smooth the edges */
+					 0px  0px 15px rgba(0,0,0,1) !important;
+			min-height: 32% !important; /* Just tall enough to act as a dialogue letterbox */
 		}
 		/* Forces the spawned video to stay inside its specific box */
 		.video-preview-container {
@@ -592,8 +606,7 @@
 				left: 0 !important;
 				width: 100% !important;        /* Matches the video width exactly */
 				transform: none !important;
-				
-				background: rgba(0, 0, 0, 0.85);
+		
 				color: #ffffff;
 				padding: 12px 20px !important;
 				font-size: 0.9rem !important;
@@ -602,8 +615,23 @@
 				z-index: 3001;
 				pointer-events: none;
 				box-sizing: border-box !important;
+				width: 90%;      
+				max-width: 600px;
+				pointer-events: none;
+				/* 1. LOWER OPACITY & BLUR */
+				background: rgba(0, 0, 0, 0.2) !important; /* Alpha lowered from 0.8 to 0.4 */
+				backdrop-filter: blur(1px) !important;    /* Blur lowered from 5px to 3px */
 				
-
+				text-shadow: 
+						/* 4px Cardinals */
+						 4px  0px 0 #000, -4px  0px 0 #000, 0px  4px 0 #000, 0px -4px 0 #000,
+						/* 4px Diagonals */
+						 3px  3px 0 #000, -3px  3px 0 #000, 3px -3px 0 #000, -3px -3px 0 #000,
+						/* 4px Sub-Diagonals (Filling the gaps) */
+						 4px  2px 0 #000,  4px -2px 0 #000, -4px  2px 0 #000, -4px -2px 0 #000,
+						 2px  4px 0 #000, -2px  4px 0 #000,  2px -4px 0 #000, -2px -4px 0 #000,
+						/* Outer Glow to smooth the edges */
+						 0px  0px 15px rgba(0,0,0,1) !important;
 				min-height: 32% !important; /* Just tall enough to act as a dialogue letterbox */
 			}
 			#lightbox-close {
@@ -697,12 +725,15 @@
 			}
 			.lightbox-caption {
 				position: absolute !important; /* Anchors to the VIDEO, not the screen */
-				bottom: -40px !important;          /* Glues perfectly to the bottom of the footage */
+				bottom: 0 !important;          /* Glues perfectly to the bottom of the footage */
+				
 				left: 0 !important;
-				width: 100% !important;        /* Matches the video width exactly */
+				right: 0 !important;      /* Setting both to 0 creates a 100% boundary */
+				margin-left: auto !important;
+				margin-right: auto !important; /* Auto margins inside a boundary force centering */
+				
 				transform: none !important;
 				
-				background: rgba(0, 0, 0, 0.85);
 				color: #ffffff;
 				padding: 12px 20px !important;
 				font-size: 0.9rem !important;
@@ -712,7 +743,24 @@
 				pointer-events: none;
 				box-sizing: border-box !important;
 				
-				backdrop-filter: blur(5px); 
+				width: 90%;      
+				max-width: 600px;
+				pointer-events: none;
+				/* 1. LOWER OPACITY & BLUR */
+				background: rgba(0, 0, 0, 0.2) !important; /* Alpha lowered from 0.8 to 0.4 */
+				backdrop-filter: blur(1px) !important;    /* Blur lowered from 5px to 3px */
+				
+				text-shadow: 
+						/* 4px Cardinals */
+						 4px  0px 0 #000, -4px  0px 0 #000, 0px  4px 0 #000, 0px -4px 0 #000,
+						/* 4px Diagonals */
+						 3px  3px 0 #000, -3px  3px 0 #000, 3px -3px 0 #000, -3px -3px 0 #000,
+						/* 4px Sub-Diagonals (Filling the gaps) */
+						 4px  2px 0 #000,  4px -2px 0 #000, -4px  2px 0 #000, -4px -2px 0 #000,
+						 2px  4px 0 #000, -2px  4px 0 #000,  2px -4px 0 #000, -2px -4px 0 #000,
+						/* Outer Glow to smooth the edges */
+						 0px  0px 15px rgba(0,0,0,1) !important;
+				min-height: 32% !important; /* Just tall enough to act as a dialogue letterbox */
 
 			}
 			/* FORCE LANDSCAPE TO UN-CROP (Defeating the portrait zoom) */
