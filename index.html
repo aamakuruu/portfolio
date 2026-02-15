@@ -847,15 +847,11 @@
     <div class="wrapper">
 		<h2 id="games">Gameplay Showcase</h2>
 		<div class="games-video"> 
-            <div class="video-container">
-				<iframe width="100%" height="100%" src="https://www.youtube.com/embed/764jojmIdPM" frameborder="0" allowfullscreen></iframe>
-			</div>
-			<div class="video-container">
-				<iframe width="100%" height="100%" src="https://www.youtube.com/embed/764jojmIdPM" frameborder="0" allowfullscreen></iframe>
-			</div>
-
-            <div class="video-container video-preview-container" data-video-src="game-art/MoM.webm" onclick="openLightbox(this.dataset.videoSrc)">
-                <img src="game-art/MoM.png" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;">
+			<div class="gallery-card">
+				<div class="video-container">
+					<iframe width="100%" height="100%" src="https://www.youtube.com/embed/764jojmIdPM" frameborder="0" allowfullscreen></iframe>
+				</div>
+				<p class="design-caption">Full playthrough of Spare 'Em Up with an S++ rank.</p>
 			</div>
 		</div>
 
@@ -909,6 +905,82 @@
 				</div>
 				<p class="design-caption">Mid-fight collectibles.</p>
 			</div>
+			<div class="gallery-card">
+				<div class="video-container video-preview-container" 
+					 data-caption="Cover the entire screen with a cloud to seamlessly change the background." 
+					 data-video-src="screenshot/spare/5.mp4" 
+					 onclick="openLightbox(this.dataset.videoSrc, this.dataset.zoom, this.dataset.caption)">
+					<img src="screenshot/spare/5.png" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block;">
+				</div>
+				<p class="design-caption">Screen transition.</p>
+			</div>
+			<div class="gallery-card">
+				<div class="video-container video-preview-container" 
+					 data-caption="Cracked rocks means they can be destroyed." 
+					 data-video-src="screenshot/spare/6.mp4" 
+					 onclick="openLightbox(this.dataset.videoSrc, this.dataset.zoom, this.dataset.caption)">
+					<img src="screenshot/spare/6.png" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block;">
+				</div>
+				<p class="design-caption">Destroyable objects.</p>
+			</div>
+			<div class="gallery-card">
+				<div class="video-container video-preview-container" 
+					 data-caption="Guide the player by placing collectibles in the safe zones." 
+					 data-video-src="screenshot/spare/7.mp4" 
+					 onclick="openLightbox(this.dataset.videoSrc, this.dataset.zoom, this.dataset.caption)">
+					<img src="screenshot/spare/7.png" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block;">
+				</div>
+				<p class="design-caption">Environmental hazards.</p>
+			</div>
+			<div class="gallery-card">
+				<div class="video-container video-preview-container" 
+					 data-caption="Slow down before stopping." 
+					 data-video-src="screenshot/spare/8.mp4" 
+					 onclick="openLightbox(this.dataset.videoSrc, this.dataset.zoom, this.dataset.caption)">
+					<img src="screenshot/spare/8.png" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block;">
+				</div>
+				<p class="design-caption">End of the road.</p>
+			</div>
+			<div class="gallery-card">
+				<div class="video-container video-preview-container" 
+					 data-caption="Transition into the boss arena without moving the characters by changing the background." 
+					 data-video-src="screenshot/spare/9.mp4" 
+					 onclick="openLightbox(this.dataset.videoSrc, this.dataset.zoom, this.dataset.caption)">
+					<img src="screenshot/spare/9.png" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block;">
+				</div>
+				<p class="design-caption">Boss intro.</p>
+			</div>
+			<div class="gallery-card">
+				<div class="video-container video-preview-container" 
+					 data-caption="Change the background perspective based on player's Y position to create depth." 
+					 data-video-src="screenshot/spare/10.mp4" 
+					 onclick="openLightbox(this.dataset.videoSrc, this.dataset.zoom, this.dataset.caption)">
+					<img src="screenshot/spare/10.png" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block;">
+				</div>
+				<p class="design-caption">Dynamic background.</p>
+			</div>
+			<div class="gallery-card">
+				<div class="video-container video-preview-container" 
+					 data-caption="Move back to the previous area by covering the screen with the white explosion.&#10Remove the door to indicate progress and that the boss has been defeated." 
+					 data-video-src="screenshot/spare/11.mp4" 
+					 onclick="openLightbox(this.dataset.videoSrc, this.dataset.zoom, this.dataset.caption)">
+					<img src="screenshot/spare/11.png" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block;">
+				</div>
+				<p class="design-caption">Boss defeated.</p>
+			</div>
+			<div class="gallery-card">
+				<div class="video-container video-preview-container" 
+					 data-caption="The light indicates an exit." 
+					 data-video-src="screenshot/spare/12.mp4" 
+					 onclick="openLightbox(this.dataset.videoSrc, this.dataset.zoom, this.dataset.caption)">
+					<img src="screenshot/spare/12.png" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block;">
+				</div>
+				<p class="design-caption">End of the level.</p>
+			</div>
+			<div style="aspect-ratio: 16/9; visibility: hidden;"></div>
+			<h3 style="letter-spacing: 4px; font-size: 1.2rem; color: #ff3b4e; margin-bottom: -30px;">PROJECT: DELTAFURI</h3>
+				<div class="level-gallery">
+				</div>
 			<div class="gallery-card">
 				<img src="game-art/cave end.png" data-caption="The light implies an exit route." loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)">
 				<p class="design-caption">End cave.</p>
