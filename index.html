@@ -372,8 +372,8 @@
 			max-width: 950px;
             pointer-events: none;
 			/* 1. LOWER OPACITY & BLUR */
-			background: rgba(0, 0, 0, 0.2) !important; /* Alpha lowered from 0.8 to 0.4 */
-			backdrop-filter: blur(1px) !important;    /* Blur lowered from 5px to 3px */
+			background: rgba(0, 0, 0, 0.7) !important; 
+			backdrop-filter: blur(1px) !important;    
 			
 			text-shadow: 
 					/* 4px Cardinals */
@@ -880,25 +880,25 @@
 			<div class="gallery-card">
 				<div class="video-container video-preview-container" 
 					 data-caption="
-					 Instead of mindlessly holding the fire button, players are encouraged to perform a <span class='highlight'>finisher</span>, by weakening the enemies without killing them.<br><br>
-					 The more spared enemies at once, the higher the scoring multiplier.<br>
-					 Players must carefully decide on when to engage and when to <span class='highlight'>spare</span>." 
-					 data-video-src="screenshot/spare/0.mp4" 
+					 Instead of mindlessly holding the fire button, players are encouraged to perform a <span class='highlight'>finisher</span>, by weakening the enemies without killing them.
+					 <br>The more <span class='highlight'>spared</span> enemies at once, the higher the scoring multiplier.
+					 <br><br>I added a built-in online leaderboard with players being able to reach S++ Rank, proving that they can play the game the intended way."
+					 data-video-src="screenshot/spare/13.mp4" 
 					 onclick="openLightbox(this.dataset.videoSrc, this.dataset.zoom, this.dataset.caption)">					 
-					<img src="screenshot/spare/0.png" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block;">
+					<img src="screenshot/spare/3.png" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block;">
 				</div>
-				<p class="design-caption"><strong>Precision Based Shooter</strong><br>Developed a Spare system that encourages trigger discipline and selective targeting.<i style="display: block; padding-right: 15px; text-align: right; font-weight: bold; text-decoration: underline;;">Read more...</i></p>
+				<p class="design-caption"><strong>Ranked Precision Shmup</strong><br>I made a shmup that discourages holding down the fire button with built-in online leaderboard. <i style="display: block; padding-right: 15px; text-align: right; font-weight: bold; text-decoration: underline;;">Read more...</i></p>
 			</div>
 			<div class="gallery-card">
 				<div class="video-container video-preview-container" 
-					 data-caption="By placing the collectibles near the enemies. This makes the player cautious about firing randomly.<br><br>
+					 data-caption="By placing the collectibles near the enemies, this makes the player cautious about firing randomly.<br><br>
 					 Players will be rewarded with satisfying sound cues and increased score multiplier upon collecting them.<br><br>
 					 It adds another objective for the players to do, beyond just combat." 
 					 data-video-src="screenshot/spare/4.mp4" 
 					 onclick="openLightbox(this.dataset.videoSrc, this.dataset.zoom, this.dataset.caption)">
 					<img src="screenshot/spare/4.png" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block;">
 				</div>
-				<p class="design-caption"><strong>Destroyable Collectibles</strong><br>Collectibles can be destroyed by shooting them, forcing players to exercise strict trigger control.<i style="display: block; padding-right: 15px; text-align: right; font-weight: bold; text-decoration: underline;;">Read more...</i></p>
+				<p class="design-caption"><strong>Intentional Placement</strong><br>I placed collectibles behind the enemies to punish careless players.<br><br><i style="display: block; padding-right: 15px; text-align: right; font-weight: bold; text-decoration: underline;;">Read more...</i></p>
 			</div>
 			<div class="gallery-card">
 				<div class="video-container video-preview-container" 
@@ -911,7 +911,7 @@
 					 onclick="openLightbox(this.dataset.videoSrc, this.dataset.zoom, this.dataset.caption)">
 					<img src="screenshot/spare/7.png" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block;">
 				</div>
-				<p class="design-caption"><strong>Environmental Hazards</strong><br>Using collectibles to safely lead the player through the hazards.<i style="display: block;"><br></i><i style="display: block; padding-right: 15px; text-align: right; font-weight: bold; text-decoration: underline;;">Read more...</i></p>
+				<p class="design-caption"><strong>Leading by Items</strong><br>Using collectibles to safely lead the player through the hazards.<i style="display: block;"><br></i><i style="display: block; padding-right: 15px; text-align: right; font-weight: bold; text-decoration: underline;;">Read more...</i></p>
 			</div>
 			<div class="gallery-card">
 				<div class="video-container video-preview-container" 
@@ -925,12 +925,12 @@
 					 onclick="openLightbox(this.dataset.videoSrc, this.dataset.zoom, this.dataset.caption)">
 					<img src="screenshot/spare/10.png" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block;">
 				</div>
-				<p class="design-caption"><strong>Dynamic Background</strong><br>Implemented a dynamic background that reacts to player's movement.<i style="display: block; padding-right: 15px; text-align: right; font-weight: bold; text-decoration: underline;;">Read more...</i></p>
+				<p class="design-caption"><strong>Reactive Background</strong><br>Implemented a dynamic background that reacts to player's movement.<br><br><i style="display: block; padding-right: 15px; text-align: right; font-weight: bold; text-decoration: underline;;">Read more...</i></p>
 			</div>
 			<div class="gallery-card">
 				<div class="video-container video-preview-container" 
 					 data-caption="I changed the background once the cloud covered the entire screen.<br>
-					 So that it doesn't feel too sudden.<br><br>
+					 So that it doesn't feel jarring.<br><br>
 					 Changing the background also gives the illusion that the player is going somewhere.<br>
 					 While freshening up the visuals instead of having to look only at clouds.
 					 
@@ -943,20 +943,22 @@
 			</div>
 			<div class="gallery-card">
 				<div class="video-container video-preview-container" 
-					 data-caption="The explosion is used to change the background by covering the entire screen.<br>
-					 Followed by a victory pose and musical cue.<br><br>
-					 This gives the player a satisfying feel that the players have overcome the challenge." 
-					 data-video-src="screenshot/spare/11.mp4" 
+					 data-caption=" The first ending focuses on trigger discipline, while the secret ending requires the player to kill every single enemies in the earlier waves, subverting the main gimmick of the game.
+					 <br><br>It also features a different gameplay.
+					 Now the player has to face orange bullets that can be destroyed using the <span class='highlight'>finisher</span> move.
+					 <br><br>This was made within 16 hours after a fan suggested me to make a second ending.
+					 <br>I also added a new boss to complete the flow of the game." 
+					 data-video-src="screenshot/spare/14.mp4" 
 					 onclick="openLightbox(this.dataset.videoSrc, this.dataset.zoom, this.dataset.caption)">
-					<img src="screenshot/spare/11.png" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block;">
+					<img src="screenshot/spare/14.png" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block;">
 				</div>
-				<p class="design-caption"><strong>Level Closure</strong><br>Epic explosion to finish off the level.<br><br><i style="display: block; padding-right: 15px; text-align: right; font-weight: bold; text-decoration: underline;;">Read more...</i></p>
+				<p class="design-caption"><strong>Playstyle Based Endings</strong><br>I made two endings that can be unlocked according to player's behavior.<br><br><i style="display: block; padding-right: 15px; text-align: right; font-weight: bold; text-decoration: underline;;">Read more...</i></p>
 			</div>
 
 			
 			
 			
-			<h3 style="letter-spacing: 4px; font-size: 1.2rem; color: #ff3b4e; margin-bottom: -30px;">Vertical Slices</h3>
+			<h3 style="letter-spacing: 4px; font-size: 1.2rem; color: #ff3b4e; margin-bottom: -30px;">TECHNICAL SHOWCASE</h3>
 				<div class="level-gallery">
 				</div>
 			<div class="gallery-card">
@@ -991,7 +993,7 @@
 					<iframe width="100%" height="100%" src="https://www.youtube.com/embed/764jojmIdPM" frameborder="0" allowfullscreen></iframe>
 				</div>
 				<p class="design-caption yt-caption">
-					Full playthrough of <strong>Spare 'Em Up</strong> with an S++ rank
+					<strong>S++ Rank</strong> Playthrough by awa777 
 					<br>
 					
 						</p>
