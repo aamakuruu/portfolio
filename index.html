@@ -713,17 +713,27 @@
 				margin-top: -50px !important; /* Pulls the text upward */
 			}
 			.video-container::after {
-			width: 30px;
-			height: 30px;
-			line-height: 30px;
-			text-align: center;
-			border-radius: 50%;
-			font-size: 15px;
-			pointer-events: none;
-			transition: all 0.3s ease;
-			opacity: 1;
-			z-index: 6;
-		}
+				width: 30px;
+				height: 30px;
+				line-height: 30px;
+				text-align: center;
+				border-radius: 50%;
+				font-size: 15px;
+				pointer-events: none;
+				transition: all 0.3s ease;
+				opacity: 1;
+				z-index: 6;
+			}
+			.yt-caption {
+	
+				font-size: 0.8rem;
+				margin: 0;
+				line-height: 1.4;
+				border-left: 2px solid #ff3b4e;
+				padding-left: 10px;
+				top: 10px;
+				margin-top: -10px !important; 
+			}
 		}
 		@media (max-width: 844px) and (orientation: landscape) {
 			.wrapper {
@@ -925,18 +935,18 @@
 					 data-caption="
 					 Instead of mindlessly holding the fire button, players are encouraged to perform a <span class='highlight'>finisher</span>, by weakening the enemies without killing them.
 					 <br>The more <span class='highlight'>spared</span> enemies at once, the higher the scoring multiplier.
-					 <br><br>I added a built-in online leaderboard with players being able to reach S++ Rank, proving that they can play the game the intended way."
+					 <br><br>I added a built-in online leaderboard allowing players to reach S++ Rank, proving that they can play the game the intended way."
 					 data-video-src="screenshot/spare/13.mp4" 
 					 onclick="openLightbox(this.dataset.videoSrc, this.dataset.zoom, this.dataset.caption)">					 
 					<img src="screenshot/spare/3.png" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block;">
 				</div>
-				<p class="design-caption"><strong>Ranked Precision Shmup</strong><br>I made a shmup that discourages holding down the fire button with built-in online leaderboard. <i style="display: block; padding-right: 15px; text-align: right; font-weight: bold; text-decoration: underline;;">Read more...</i></p>
+				<p class="design-caption"><strong>Ranked Precision Shmup</strong><br>I made a shmup that discourages holding down the fire button with a built-in online leaderboard. <i style="display: block; padding-right: 15px; text-align: right; font-weight: bold; text-decoration: underline;;">Read more...</i></p>
 			</div>
 			<div class="gallery-card">
 				<div class="video-container video-preview-container" 
-					 data-caption="By placing the collectibles near the enemies, this makes the player cautious about firing randomly.<br><br>
+					 data-caption="Placing collectibles near enemies makes the player cautious about firing randomly.<br><br>
 					 Players will be rewarded with satisfying sound cues and increased score multiplier upon collecting them.<br><br>
-					 It adds another objective for the players to do, beyond just combat." 
+					 It provides an additional objective beyond combat." 
 					 data-video-src="screenshot/spare/4.mp4" 
 					 onclick="openLightbox(this.dataset.videoSrc, this.dataset.zoom, this.dataset.caption)">
 					<img src="screenshot/spare/4.png" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block;">
@@ -945,10 +955,9 @@
 			</div>
 			<div class="gallery-card">
 				<div class="video-container video-preview-container" 
-					 data-caption="To prevent players from getting overwhelmed by the hazardous spikes.<br><br>
-					 I placed collectibles in safe zones to encourage players to navigate through hazards effectively.<br><br>
-					 While the player also has to shoot the cracked walls.<br>
-					 Players also need to be careful not shoot to the collectibles.
+					 data-caption="To prevent players from getting overwhelmed by the hazardous spikes,
+					 I placed collectibles in safe zones to encourage players to navigate through hazards effectively<br><br>
+					 While shooting the cracked walls, players must also be careful not to shoot the collectibles.<br>
 					 "
 					 data-video-src="screenshot/spare/7.mp4" 
 					 onclick="openLightbox(this.dataset.videoSrc, this.dataset.zoom, this.dataset.caption)">
@@ -968,12 +977,11 @@
 					 onclick="openLightbox(this.dataset.videoSrc, this.dataset.zoom, this.dataset.caption)">
 					<img src="screenshot/spare/10.png" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block;">
 				</div>
-				<p class="design-caption"><strong>Reactive Background</strong><br>Implemented a dynamic background that reacts to player's movement.<br><br><i style="display: block; padding-right: 15px; text-align: right; font-weight: bold; text-decoration: underline;;">Read more...</i></p>
+				<p class="design-caption"><strong>Reactive Background</strong><br>Implemented a dynamic background that reacts to the player's movement.<br><i style="display: block; padding-right: 15px; text-align: right; font-weight: bold; text-decoration: underline;;">Read more...</i></p>
 			</div>
 			<div class="gallery-card">
 				<div class="video-container video-preview-container" 
-					 data-caption="I changed the background once the cloud covered the entire screen.<br>
-					 So that it doesn't feel jarring.<br><br>
+					 data-caption="I changed the background once the cloud covered the entire screen so that it doesn't feel jarring.<br><br>
 					 Changing the background also gives the illusion that the player is going somewhere.<br>
 					 While freshening up the visuals instead of having to look only at clouds.					 
 					 " 
@@ -985,16 +993,16 @@
 			</div>
 			<div class="gallery-card">
 				<div class="video-container video-preview-container" 
-					 data-caption="The first ending focuses on trigger discipline, while the secret ending requires the player to kill every single enemies in the earlier waves, subverting the main gimmick of the game.
-					 <br><br>It also features a different gameplay.
+					 data-caption="The first ending focuses on trigger discipline, while the secret ending requires the player to kill every single enemy in the earlier waves, subverting the main gimmick of the game.
+					 <br><br>It also features different gameplay.
 					 Now the player has to face orange bullets that can be destroyed using the <span class='highlight'>finisher</span> move.
-					 <br><br>This was made within 16 hours after a fan suggested me to make a second ending.
+					 <br><br>This was made within 16 hours after a fan suggested I make a second ending.
 					 <br>I also added a new boss to complete the flow of the game." 
 					 data-video-src="screenshot/spare/14.mp4" 
 					 onclick="openLightbox(this.dataset.videoSrc, this.dataset.zoom, this.dataset.caption)">
 					<img src="screenshot/spare/14.png" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block;">
 				</div>
-				<p class="design-caption"><strong>Playstyle Based Endings</strong><br>I made two endings that can be unlocked according to player's behavior.<br><br><i style="display: block; padding-right: 15px; text-align: right; font-weight: bold; text-decoration: underline;;">Read more...</i></p>
+				<p class="design-caption"><strong>Playstyle Based Endings</strong><br>I made two endings that can be unlocked according to the player's behavior.<br><i style="display: block; padding-right: 15px; text-align: right; font-weight: bold; text-decoration: underline;;">Read more...</i></p>
 			</div>
 
 			
@@ -1006,8 +1014,8 @@
 			<div class="gallery-card">
 				<div class="video-container video-preview-container" 
 					 data-caption="• Bullet Hell + Parry mechanic: I combined some of my favorite mechanics that are fun to master.<br><br>
-					• Multi-Phase Boss Fight: <br>I used the first 3 phases as a tutorial to get players used into the mechanic.
-											  <br>Despite the fight taking roughly 10 minutes, the multi-phases helps with keeping it fresh.
+					• Multi-Phase Boss Fight: <br>I used the first 3 phases as a tutorial to get players used to the mechanics.
+											  <br>Despite the fight taking roughly 10 minutes, the multiple phases help keep it fresh.
 					<br><br>
 					• Interactive Environment: <br>I hid the rain and the music until the player steps outside the first room, indicating that the game has finally started.
 					"
@@ -1015,19 +1023,32 @@
 					 onclick="openLightbox(this.dataset.videoSrc, this.dataset.zoom, this.dataset.caption)">
 					<img src="screenshot/deltafuri/0.png" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block;">
 				</div>
-				<p class="design-caption"><strong>7-Phase Hybrid Encounter</strong><br>I made a Bullet Hell Boss fight with a lively environment within <br>three months.<br><br><i style="display: block; padding-right: 15px; text-align: right; font-weight: bold; text-decoration: underline;;">Read more...</i></p>
+				<p class="design-caption"><strong>7-Phase Hybrid Encounter</strong><br>I made a Bullet Hell Boss fight with a lively environment within <br>three months.<br><i style="display: block; padding-right: 15px; text-align: right; font-weight: bold; text-decoration: underline;;">Read more...</i></p>
 			</div>
 			<div class="gallery-card">
 				<div class="video-container video-preview-container" 
 					 data-caption="• Balanced Difficulty: <br>Players can risk dealing higher damage by relying on melee at the risk of being counter-attacked. I made a safer option that allows players to use magic to bypass it. 
-					 <br><br>• Multi Boss Phases: The boss will start using new attacks and different layers of music will play, giving player a sense of progress.
-					 <br><br>• Fourth Wall Endings: <br>I made both endings where the characters speak to the player directly, that depends on the players' final decision outside of the game. 
+					 <br><br>• Multi Boss Phases: The boss will start using new attacks and different layers of music will play, giving the player a sense of progress.
+					 <br><br>• Fourth Wall Endings: <br>I designed two endings where the characters speak directly to the player, depending on the player's final decision outside of the game. 
 					 "
 					 data-video-src="screenshot/hk/0.mp4" 
 					 onclick="openLightbox(this.dataset.videoSrc, this.dataset.zoom, this.dataset.caption)">
 					<img src="screenshot/hk/0.png" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block;">
 				</div>
-				<p class="design-caption"><strong>Meta Level Progression</strong><br>Players must circumvent the game's challenge by breaking the<br>fourth wall.<br><br><i style="display: block; padding-right: 15px; text-align: right; font-weight: bold; text-decoration: underline;;">Read more...</i></p>
+				<p class="design-caption"><strong>Meta Level Progression</strong><br>Players must circumvent the game's challenge by breaking the<br>fourth wall.<br><i style="display: block; padding-right: 15px; text-align: right; font-weight: bold; text-decoration: underline;;">Read more...</i></p>
+			</div>
+			<div class="gallery-card">
+				<div class="video-container video-preview-container" 
+	 				 data-caption="<br>
+	 				 The movie served me well as an inspiration for the attack ideas.
+	  				 <br>As soon as I saw the first punch, it gave me an idea to recreate the intro with it.
+					 <br><br>During the sky part, I put some bullets that force the player to dance around just like the movie.
+					 "
+					 data-video-src="screenshot/spinel/0.mp4" 
+					 onclick="openLightbox(this.dataset.videoSrc, this.dataset.zoom, this.dataset.caption)">
+					<img src="screenshot/spinel/0.png" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block;">
+				</div>
+				<p class="design-caption"><strong>From Movie to Game</strong><br>I turned the Steven Universe movie fight into a playable Deltarune fight.<br><i style="display: block; padding-right: 15px; text-align: right; font-weight: bold; text-decoration: underline;;">Read more...</i></p>
 			</div>
         </div>
 		
@@ -1036,16 +1057,15 @@
 			<div class="gallery-card">
 				<div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;">
 					<iframe style="position:absolute; top:0; left:0; width:100%; height:100%;" 
-							src="https://www.youtube.com/embed/764jojmIdPM" 
+							src="https://www.youtube.com/embed/W5d2NJT8PX4"
 							frameborder="0" allowfullscreen
 							onclick="event.stopPropagation();">
 					</iframe>
 				</div>
 				<p class="design-caption yt-caption">
-					<strong>S++ Rank</strong> Playthrough by awa777 
+					<strong>S++ Rank</strong> Playthrough by <span style="color: #ff3b4e; font-weight: bold;">Cert</span>  
 				</p>
 			</div>
-
 			<div class="gallery-card">
 				<div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;"> 
 					<iframe style="position:absolute; top:0; left:0; width:100%; height:100%;" 
@@ -1055,7 +1075,31 @@
 					</iframe>
 				</div>
 				<p class="design-caption yt-caption">
-					<strong>Deltafuri</strong> Commentary Playthrough by Phi 
+					<strong>Deltafuri</strong> Commentary Playthrough by <span style="color: #ff3b4e; font-weight: bold;">Phi</span>  
+				</p>
+			</div>
+			<div class="gallery-card">
+				<div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;"> 
+					<iframe style="position:absolute; top:0; left:0; width:100%; height:100%;" 
+							src="https://www.youtube.com/embed/FAdv4Scee60?start=28"
+							frameborder="0" allowfullscreen
+							onclick="event.stopPropagation();">
+					</iframe>
+				</div>
+				<p class="design-caption yt-caption">
+					<strong>Hollow Shot</strong> Commentary Playthrough by <span style="color: #ff3b4e; font-weight: bold;">Merg</span> 
+				</p>
+			</div>
+			<div class="gallery-card">
+				<div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;"> 
+					<iframe style="position:absolute; top:0; left:0; width:100%; height:100%;" 
+							src="https://www.youtube.com/embed/TnWCrghLv8o"
+							frameborder="0" allowfullscreen
+							onclick="event.stopPropagation();">
+					</iframe>
+				</div>
+				<p class="design-caption yt-caption">
+					<strong>Vs. Spinel</strong> Full Playthrough 
 				</p>
 			</div>
 		</div>
