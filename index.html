@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AMAR MAKRUF | Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
     
     <style>
 		*, *:before, *:after {
@@ -319,6 +319,7 @@
 			text-transform: uppercase;
 			transition: all 0.2s;
 			-webkit-transform: translateZ(0);
+			transform: translateZ(0);
 		}
 		#jumpToTop:hover { background-color: #ff3b4e; color: #1a1a1a; }
 		
@@ -478,9 +479,9 @@
 		.zoom-2x { transform: scale(2); }   
 		.zoom-1-5x { transform: scale(1.5); } 
 		.zoom-1-2x { transform: scale(1.2); }  
-		.zoom-0.5x { transform: scale(0.5); }
-		.zoom-0.25x { transform: scale(0.25); }
-		.zoom-0.1x { transform: scale(0.1); }
+		.zoom-0-5x { transform: scale(0.5); }
+		.zoom-0-25x { transform: scale(0.25); }
+		.zoom-0-1x { transform: scale(0.1); }
 		
         .accent { color: #ff3b4e; text-decoration: none; font-weight: 700; }
 		
@@ -636,8 +637,8 @@
 		
 				color: #ffffff;
 				padding: 12px 20px !important;
-				font-size: 0.9rem !important;
-				font-weight: 500;
+				font-size: 0.75rem !important;
+				font-weight: 300;
 				text-align: left;
 				z-index: 3001;
 				pointer-events: none;
@@ -659,7 +660,7 @@
 						 2px  4px 0 #000, -2px  4px 0 #000,  2px -4px 0 #000, -2px -4px 0 #000,
 						/* Outer Glow to smooth the edges */
 						 0px  0px 15px rgba(0,0,0,1) !important;
-				min-height: 48% !important; /* Just tall enough to act as a dialogue letterbox */
+				min-height: 46% !important; /* Just tall enough to act as a dialogue letterbox */
 			}
 			#lightbox-close {
 				position: fixed !important;
@@ -772,8 +773,8 @@
 				
 				color: #ffffff;
 				padding: 12px 20px !important;
-				font-size: 0.9rem !important;
-				font-weight: 500;
+				font-size: 0.7rem !important;
+				font-weight: 300;
 				text-align: left;
 				z-index: 3001;
 				pointer-events: none;
@@ -932,8 +933,7 @@
 					 data-caption="I changed the background once the cloud covered the entire screen.<br>
 					 So that it doesn't feel jarring.<br><br>
 					 Changing the background also gives the illusion that the player is going somewhere.<br>
-					 While freshening up the visuals instead of having to look only at clouds.
-					 
+					 While freshening up the visuals instead of having to look only at clouds.					 
 					 " 
 					 data-video-src="screenshot/spare/5.mp4" 
 					 onclick="openLightbox(this.dataset.videoSrc, this.dataset.zoom, this.dataset.caption)">
@@ -943,7 +943,7 @@
 			</div>
 			<div class="gallery-card">
 				<div class="video-container video-preview-container" 
-					 data-caption=" The first ending focuses on trigger discipline, while the secret ending requires the player to kill every single enemies in the earlier waves, subverting the main gimmick of the game.
+					 data-caption="The first ending focuses on trigger discipline, while the secret ending requires the player to kill every single enemies in the earlier waves, subverting the main gimmick of the game.
 					 <br><br>It also features a different gameplay.
 					 Now the player has to face orange bullets that can be destroyed using the <span class='highlight'>finisher</span> move.
 					 <br><br>This was made within 16 hours after a fan suggested me to make a second ending.
@@ -962,27 +962,18 @@
 				<div class="level-gallery">
 				</div>
 			<div class="gallery-card">
-				<img src="game-art/cave end.png" data-caption="The light implies an exit route." loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)">
-				<p class="design-caption">End cave.</p>
-			</div>
-            <div class="gallery-card">
-				<img src="game-art/deltafuribg.png" data-caption="RIIIGHT." loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)">
-				<p class="design-caption"><strong>RAIIN:</strong></p>
-			</div>
-            <div class="gallery-card">
-				<img src="game-art/buildingsilhrun.png" data-caption="before the destruction." loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)">
-				<p class="design-caption">Building intact.</p>
-			</div>
-            <div class="gallery-card">
-				<img src="game-art/spinelbg.png" data-caption="EPIC" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)">
-				<p class="design-caption">JUST LIKE THE SHOW.</p>
-			</div>
-            <div class="gallery-card">
-				<img src="game-art/hkbg.png" data-caption="LITERALLY" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)">
-				<p class="design-caption"><strong>JUST LIKE THE GAME</strong></p>
-			</div>
-            <div class="gallery-card">
-				<img src="game-art/vskrisbg.png" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, this.dataset.caption)">
+				<div class="video-container video-preview-container" 
+					 data-caption="• Bullet Hell + Parry mechanic: I combined some of my favorite mechanics that are fun to master.<br><br>
+					• Multi-Phase Boss Fight: <br>I used the first 3 phases as a tutorial to get players used into the mechanic.
+											  <br>Despite the fight taking roughly 10 minutes, the multi-phases helps with keeping things fresh.
+					<br><br>
+					• Interactive Environment: <br>I hid the rain and the music until the player steps outside the first room, indicating that the game has finally started.
+					"
+					 data-video-src="screenshot/deltafuri/0.mp4" 
+					 onclick="openLightbox(this.dataset.videoSrc, this.dataset.zoom, this.dataset.caption)">
+					<img src="screenshot/deltafuri/0.png" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block;">
+				</div>
+				<p class="design-caption"><strong>7-Phase Hybrid Encounter</strong><br>I made a Bullet Hell Boss fight with a lively environment within <br>3 months.<br><br><i style="display: block; padding-right: 15px; text-align: right; font-weight: bold; text-decoration: underline;;">Read more...</i></p>
 			</div>
         </div>
 		
@@ -1003,16 +994,16 @@
 		<h2 id="game-art">Game Assets</h2>
         <div class="game-gallery">
 			<div class="image-box">
-				<img src="game-art/circle no logo.png" data-zoom="1.5" class="zoom-2x" style="transform-origin: 60% 50%;" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, '', true)"> 
+				<img src="game-art/circle no logo.png" data-zoom="2" class="zoom-2x" style="transform-origin: 60% 50%;" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, '', true)"> 
             </div>
 			<div class="image-box">
-				<img src="game-art/zoharfaces.png" data-zoom="1.5" class="zoom-0.25x" style="transform-origin: 50% 50%;" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, '', true)"> 
+				<img src="game-art/zoharfaces.png" data-zoom="1.5" style="transform-origin: 50% 50%;" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, '', true)"> 
             </div>
 			<div class="image-box">
-			    <img src="game-art/karma_special.png" data-zoom="0.5" class="zoom-0.1x" onmouseover="this.src='game-art/karma_special.gif#' + Math.random();" onmouseout="this.src='game-art/karma_special.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, '', true)"> 
+			    <img src="game-art/karma_special.png" data-zoom="0.5"  onmouseover="this.src='game-art/karma_special.gif#' + Math.random();" onmouseout="this.src='game-art/karma_special.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, '', true)"> 
             </div>
 			<div class="image-box">
-			    <img src="game-art/echo_idle.png" data-zoom="0.5" class="zoom-0.1x" onmouseover="this.src='game-art/echo_idle.gif#' + Math.random();" onmouseout="this.src='game-art/echo_idle.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, '', true)"> 
+			    <img src="game-art/echo_idle.png" data-zoom="0.5"  onmouseover="this.src='game-art/echo_idle.gif#' + Math.random();" onmouseout="this.src='game-art/echo_idle.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, '', true)"> 
             </div>
 
             <div class="video-preview-container image-box" data-video-src="game-art/MoM.webm" onclick="openLightbox(this.dataset.videoSrc)">
