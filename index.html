@@ -505,6 +505,36 @@
 			display: none !important;
 		}
 		
+		/*
+		.gif-container {
+			position: relative;
+			image-rendering: pixelated; 
+			image-rendering: crisp-edges; 
+		}
+		.gif-container::after {
+			content: '▶';
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			background: rgba(255, 59, 78, 0.8); 
+			color: white;
+			width: 50px;
+			height: 50px;
+			line-height: 50px;
+			text-align: center;
+			border-radius: 50%;
+			font-size: 20px;
+			pointer-events: none;
+			transition: all 0.3s ease;
+			opacity: 1;
+			z-index: 6;
+		}
+		.gif-container:hover::after {
+			opacity: 0;
+			transform: translate(-50%, -50%) scale(1.1);
+		}
+		*/
 		/* MOBILE CSS */
 		@media (max-width: 844px) {
 			.wrapper {
@@ -682,6 +712,18 @@
 				top: 10px;
 				margin-top: -50px !important; /* Pulls the text upward */
 			}
+			.video-container::after {
+			width: 30px;
+			height: 30px;
+			line-height: 30px;
+			text-align: center;
+			border-radius: 50%;
+			font-size: 15px;
+			pointer-events: none;
+			transition: all 0.3s ease;
+			opacity: 1;
+			z-index: 6;
+		}
 		}
 		@media (max-width: 844px) and (orientation: landscape) {
 			.wrapper {
@@ -965,7 +1007,7 @@
 				<div class="video-container video-preview-container" 
 					 data-caption="• Bullet Hell + Parry mechanic: I combined some of my favorite mechanics that are fun to master.<br><br>
 					• Multi-Phase Boss Fight: <br>I used the first 3 phases as a tutorial to get players used into the mechanic.
-											  <br>Despite the fight taking roughly 10 minutes, the multi-phases helps with keeping things fresh.
+											  <br>Despite the fight taking roughly 10 minutes, the multi-phases helps with keeping it fresh.
 					<br><br>
 					• Interactive Environment: <br>I hid the rain and the music until the player steps outside the first room, indicating that the game has finally started.
 					"
@@ -973,24 +1015,51 @@
 					 onclick="openLightbox(this.dataset.videoSrc, this.dataset.zoom, this.dataset.caption)">
 					<img src="screenshot/deltafuri/0.png" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block;">
 				</div>
-				<p class="design-caption"><strong>7-Phase Hybrid Encounter</strong><br>I made a Bullet Hell Boss fight with a lively environment within <br>3 months.<br><br><i style="display: block; padding-right: 15px; text-align: right; font-weight: bold; text-decoration: underline;;">Read more...</i></p>
+				<p class="design-caption"><strong>7-Phase Hybrid Encounter</strong><br>I made a Bullet Hell Boss fight with a lively environment within <br>three months.<br><br><i style="display: block; padding-right: 15px; text-align: right; font-weight: bold; text-decoration: underline;;">Read more...</i></p>
+			</div>
+			<div class="gallery-card">
+				<div class="video-container video-preview-container" 
+					 data-caption="• Balanced Difficulty: <br>Players can risk dealing higher damage by relying on melee at the risk of being counter-attacked. I made a safer option that allows players to use magic to bypass it. 
+					 <br><br>• Multi Boss Phases: The boss will start using new attacks and different layers of music will play, giving player a sense of progress.
+					 <br><br>• Fourth Wall Endings: <br>I made both endings where the characters speak to the player directly, that depends on the players' final decision outside of the game. 
+					 "
+					 data-video-src="screenshot/hk/0.mp4" 
+					 onclick="openLightbox(this.dataset.videoSrc, this.dataset.zoom, this.dataset.caption)">
+					<img src="screenshot/hk/0.png" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block;">
+				</div>
+				<p class="design-caption"><strong>Meta Level Progression</strong><br>Players must circumvent the game's challenge by breaking the<br>fourth wall.<br><br><i style="display: block; padding-right: 15px; text-align: right; font-weight: bold; text-decoration: underline;;">Read more...</i></p>
 			</div>
         </div>
 		
 		<h2 id="games">Full Playthrough</h2>
 		<div class="games-video"> 
 			<div class="gallery-card">
-				<div class="video-container youtube-vid">
-					<iframe width="100%" height="100%" src="https://www.youtube.com/embed/764jojmIdPM" frameborder="0" allowfullscreen></iframe>
+				<div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;">
+					<iframe style="position:absolute; top:0; left:0; width:100%; height:100%;" 
+							src="https://www.youtube.com/embed/764jojmIdPM" 
+							frameborder="0" allowfullscreen
+							onclick="event.stopPropagation();">
+					</iframe>
 				</div>
 				<p class="design-caption yt-caption">
 					<strong>S++ Rank</strong> Playthrough by awa777 
-					<br>
-					
-						</p>
+				</p>
+			</div>
+
+			<div class="gallery-card">
+				<div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;"> 
+					<iframe style="position:absolute; top:0; left:0; width:100%; height:100%;" 
+							src="https://www.youtube.com/embed/XmdMYCkIdIg?start=300" 
+							frameborder="0" allowfullscreen
+							onclick="event.stopPropagation();">
+					</iframe>
+				</div>
+				<p class="design-caption yt-caption">
+					<strong>Deltafuri</strong> Commentary Playthrough by Phi 
+				</p>
 			</div>
 		</div>
-		
+		<!--
 		<h2 id="game-art">Game Assets</h2>
         <div class="game-gallery">
 			<div class="image-box">
@@ -999,24 +1068,36 @@
 			<div class="image-box">
 				<img src="game-art/zoharfaces.png" data-zoom="1.5" style="transform-origin: 50% 50%;" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, '', true)"> 
             </div>
-			<div class="image-box">
-			    <img src="game-art/karma_special.png" data-zoom="0.5"  onmouseover="this.src='game-art/karma_special.gif#' + Math.random();" onmouseout="this.src='game-art/karma_special.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, '', true)"> 
-            </div>
-			<div class="image-box">
-			    <img src="game-art/echo_idle.png" data-zoom="0.5"  onmouseover="this.src='game-art/echo_idle.gif#' + Math.random();" onmouseout="this.src='game-art/echo_idle.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, '', true)"> 
-            </div>
-
+			<div class="image-box gif-container">
+				<div class="image-box">
+					<img src="game-art/karma_special.png" data-zoom="0.5"  onmouseover="this.src='game-art/karma_special.gif#' + Math.random();" onmouseout="this.src='game-art/karma_special.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, '', true)"> 
+				</div>
+			</div>
+			<div class="image-box gif-container">
+				<div class="image-box">
+					<img src="game-art/echo_idle.png" data-zoom="0.5"  onmouseover="this.src='game-art/echo_idle.gif#' + Math.random();" onmouseout="this.src='game-art/echo_idle.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, '', true)"> 
+				</div>
+			</div>
             <div class="video-preview-container image-box" data-video-src="game-art/MoM.webm" onclick="openLightbox(this.dataset.videoSrc)">
                 <img src="game-art/MoM.png" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;">
             </div>
-
- 			<img src="game-art/Spin.png" onmouseover="this.src='game-art/Spin.gif#' + Math.random();" onmouseout="this.src='game-art/Spin.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, '', true)"> 
-			<img src="game-art/Zohar Fire Down.png" onmouseover="this.src='game-art/Zohar Fire Down.gif#' + Math.random();" onmouseout="this.src='game-art/Zohar Fire Down.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, '', true)"> 
-			<img src="game-art/Zohar Switch Red.png" onmouseover="this.src='game-art/Zohar Switch Red.gif#' + Math.random();" onmouseout="this.src='game-art/Zohar Switch Red.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, '', true)"> 
-			<img src="game-art/Fight Double Slash.png" onmouseover="this.src='game-art/Fight Double Slash.gif#' + Math.random();" onmouseout="this.src='game-art/Fight Double Slash.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, '', true)"> 
-			<img src="game-art/Fight Volley Slash.png" onmouseover="this.src='game-art/Fight Volley Slash.gif#' + Math.random();" onmouseout="this.src='game-art/Fight Volley Slash.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, '', true)"> 
-        </div>
-
+			<div class="image-box gif-container">
+	 			<img src="game-art/Spin.png" onmouseover="this.src='game-art/Spin.gif#' + Math.random();" onmouseout="this.src='game-art/Spin.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, '', true)"> 
+			</div>
+			<div class="image-box gif-container">
+				<img src="game-art/Zohar Fire Down.png" onmouseover="this.src='game-art/Zohar Fire Down.gif#' + Math.random();" onmouseout="this.src='game-art/Zohar Fire Down.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, '', true)"> 
+			</div>
+			<div class="image-box gif-container">
+				<img src="game-art/Zohar Switch Red.png" onmouseover="this.src='game-art/Zohar Switch Red.gif#' + Math.random();" onmouseout="this.src='game-art/Zohar Switch Red.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, '', true)"> 
+			</div>
+			<div class="image-box gif-container">
+				<img src="game-art/Fight Double Slash.png" onmouseover="this.src='game-art/Fight Double Slash.gif#' + Math.random();" onmouseout="this.src='game-art/Fight Double Slash.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, '', true)"> 
+			</div>
+			<div class="image-box gif-container">
+				<img src="game-art/Fight Volley Slash.png" onmouseover="this.src='game-art/Fight Volley Slash.gif#' + Math.random();" onmouseout="this.src='game-art/Fight Volley Slash.png'" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom, '', true)"> 
+			</div>
+		</div>
+		-->
         <h2 id="art">Illustration</h2>
         <div class="gallery">
             <img src="art/skykrill_HD.png" loading="lazy" onclick="openLightbox(this.src, this.dataset.zoom)">
